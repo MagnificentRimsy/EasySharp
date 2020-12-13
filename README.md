@@ -9,7 +9,7 @@ Find the latest at: https://github.com/mkojoa/EasySharp
 
 ## Features
 - [x] [EasyDoc](#EasyDoc)
-- [~~InputTrimer~~](#InputTrimer)
+- [X] [InputTrimmer](#InputTrimmer)
 - [~~Cors~~](#Cors)
 - [~~ApiGenericMsg~~](#ApiGenericMsg)
 - [~~XXS~~](#XXS)
@@ -68,3 +68,20 @@ Easy Doc is used for API documentation.
     }
   },
 ```
+
+#### InputTrimmer
+Input Trimmer helps trim model object before saving to db. Available trimers supported :
+ 
+ - InputTrim : Trim all leading and trailing spaces of a `string`
+ - LowerTrim : Convert `strings` to lowercase using the casing rules.
+ 
+ ```
+ [HttpPost]
+ [TrimInput]
+ [LowerInput]
+ public IActionResult CreateRecord([FromBody] WeatherForecast weatherForecast)
+ {
+     // save to db & return 
+      return Ok(weatherForecast);
+ }
+ ```
