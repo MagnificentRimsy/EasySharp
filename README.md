@@ -1,11 +1,11 @@
-# EasyCloud
+# EasySharp
 Library Infrastuctures with Easy-Documentation, Cors, CQRS pattern support, easy swagger config etc..
 
    [I've written a short Medium post about this repository](https://medium.com)
    
-Find the latest at: https://github.com/mkojoa/EasyCloud
+Find the latest at: https://github.com/mkojoa/EasySharp
 
-###### > EasyCloud Library repository is work in progress.
+###### > EasySharp Library repository is work in progress.
 
 ## Features
 - [x] [EasyDoc](#EasyDoc)
