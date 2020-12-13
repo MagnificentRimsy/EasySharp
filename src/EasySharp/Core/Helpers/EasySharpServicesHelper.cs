@@ -12,6 +12,10 @@ namespace EasySharp.Core.Helpers
     public static class EasySharpServicesHelper
     {
         private static IWebHostEnvironment _env;
+
+        /// <summary>
+        /// Verify service collection registration status and returns a bool
+        /// </summary>
         public static bool IsInitialized { get; private set; }
 
         static IServiceCollection _services = null;
@@ -32,7 +36,9 @@ namespace EasySharp.Core.Helpers
             }
         }
 
-        //should be called once, no duplication
+        /// <summary>
+        /// Should be called once, no duplication
+        /// </summary>
         public static void Initialize()
         {
             IServiceProvider serviceProvider = _services.BuildServiceProvider();
@@ -45,6 +51,10 @@ namespace EasySharp.Core.Helpers
             IsInitialized = true;
         }
 
+        /// <summary>
+        /// Retrive all app settings data
+        /// </summary>
+        /// <returns></returns>
         public static IConfigurationRoot Builder() 
         {
             if (!IsInitialized)
