@@ -99,8 +99,8 @@ Input Trimmer helps trim model object before saving to db. Available trimers sup
     ]
   }
  ```
-- **Enabled** is optional and is by default is false.
-- **Name** is optional and is by default the name is `EasySharp`.
-- **Links** is required and must include uri schema, host and port of the resource server (eg. http://localhost:5000).
+- **Enabled** is optional and by default is false.
+- **Name** is optional and by default the name is `EasySharp`.
+- **Links** is only required if `Enabled` is true and must include uri schema, host and port of the resource server (eg. http://localhost:5000).
 
 `AddCorsOption` is used in order to include it in your application.
