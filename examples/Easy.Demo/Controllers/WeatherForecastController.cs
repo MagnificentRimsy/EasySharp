@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using EasySharp.Core.Attributes;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,7 @@ namespace Easy.Demo.Controllers
         }
 
         [HttpGet]
+        [TrimInput]
         public IEnumerable<WeatherForecast> Get()
         {
             var rng = new Random();
@@ -34,6 +36,16 @@ namespace Easy.Demo.Controllers
                 Summary = Summaries[rng.Next(Summaries.Length)]
             })
             .ToArray();
+        }
+
+
+        [HttpPost]
+        [TrimInput]
+        [LowerInput]
+        public IActionResult CreateRecord([FromBody] WeatherForecast weatherForecast)
+        {
+
+            return Ok(weatherForecast);
         }
     }
 }

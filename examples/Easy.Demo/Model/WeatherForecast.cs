@@ -1,3 +1,4 @@
+using EasySharp.Core.Attributes;
 using System;
 
 namespace Easy.Demo
