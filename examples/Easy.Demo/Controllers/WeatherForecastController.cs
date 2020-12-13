@@ -45,6 +45,7 @@ namespace Easy.Demo.Controllers
         public IActionResult CreateRecord([FromBody] WeatherForecast weatherForecast)
         {
 
+            // save to db & return 
             return Ok(weatherForecast);
         }
     }

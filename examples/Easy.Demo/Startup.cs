@@ -1,4 +1,5 @@
 using EasySharp.Core;
+using EasySharp.Core.Cors;
 using EasySharp.Swagger;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -28,7 +29,8 @@ namespace Easy.Demo
         {
             services
                 .AddEasyCloud()
-                .AddDocs(Configuration);
+                .AddDocs(Configuration)
+                .AddCorsOption();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

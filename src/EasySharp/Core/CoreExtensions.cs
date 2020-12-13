@@ -1,13 +1,14 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using EasySharp.Core.Cors;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EasySharp.Core
 {
     public static class CoreExtensions
     {
+        
+
         public static IServiceCollection AddEasyCloud(this IServiceCollection services, params Type[] types)
         {
             services.AddOptions();
@@ -25,6 +26,7 @@ namespace EasySharp.Core
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseCorsOption();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

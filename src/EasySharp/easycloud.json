@@ -3,6 +3,14 @@
     "AppConnection": "Server=192.168.0.71\\SQL2012;Database=EasyDb;User ID=sa;Password=SymBoL$1948;Trusted_Connection=False;MultipleActiveResultSets=true;"
   },
 
+  "CorsOptions": {
+    "Enabled": true,
+    "Name": "CorsPolicy",
+    "Links": [
+      "http://localhost:56965"
+    ]
+  },
+
   "SwaggerOptions": {
     "enabled": true,
     "reDocEnabled": false,
