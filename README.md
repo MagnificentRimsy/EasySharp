@@ -79,9 +79,8 @@ Input Trimmer helps trim model object before saving to db. Available trimers sup
  [HttpPost]
  [TrimInput]
  [LowerInput]
- public IActionResult CreateRecord([FromBody] WeatherForecast weatherForecast)
+ public IActionResult CreateRecord([FromBody] WeatherForecast model)
  {
-     // save to db & return 
-      return Ok(weatherForecast);
+     // save to db & return
  }
  ```
