@@ -10,7 +10,7 @@ Find the latest at: https://github.com/mkojoa/EasySharp
 ## Features
 - [x] [EasyDoc](#EasyDoc)
 - [X] [InputTrimmer](#InputTrimmer)
-- [~~Cors~~](#Cors)
+- [X] [Cors](#Cors)
 - [~~ApiGenericMsg~~](#ApiGenericMsg)
 - [~~XXS~~](#XXS)
 - [~~Pagination~~](#Pagination)
@@ -84,3 +84,23 @@ Input Trimmer helps trim model object before saving to db. Available trimers sup
      // save to db & return
  }
  ```
+ 
+ #### Cors 
+ Cross-Origin Resource Sharing  is an HTTP-header based mechanism that allows a server to indicate any other origins (domain, scheme, or port) than its own from which a browser should permit loading of resources.
+ 
+ Appsettings for Cors looks like this
+ 
+ ```
+ "CorsOptions": {
+    "Enabled": true,
+    "Name": "CorsPolicy",
+    "Links": [
+      "http://localhost:5000"
+    ]
+  }
+ ```
+- **Enabled** is optional and is by default is false.
+- **Name** is optional and is by default the name is `EasySharp`.
+- **Links** is required and must include uri schema, host and port of the resource server (eg. http://localhost:5000).
+
+`AddCorsOption` is used in order to include it in your application.
