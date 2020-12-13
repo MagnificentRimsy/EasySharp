@@ -6,8 +6,8 @@ namespace EasySharp.Core.Cors.Option
 {
     public class CorsOptions
     {
-        public bool Enabled { get; set; }
-        public string Name { get; set; }
+        public bool Enabled { get; set; } = false;
+        public string Name { get; set; } = "EasySharp";
 
         public string[] Links { get; set; }
     }
