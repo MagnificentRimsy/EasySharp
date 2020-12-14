@@ -11,7 +11,7 @@ Find the latest at: https://github.com/mkojoa/EasySharp
 - [x] [EasyDoc](#EasyDoc)
 - [X] [InputTrimmer](#InputTrimmer)
 - [X] [Cors](#Cors)
-- [~~ApiGenericMsg~~](#ApiGenericMsg)
+- [ApiGenericMsg](#ApiGenericMsg)
 - [~~XXS~~](#XXS)
 - [~~Pagination~~](#Pagination)
 - [~~Payment~~](#Payment)
@@ -104,3 +104,16 @@ Input Trimmer helps trim model object before saving to db. Available trimers sup
 - **Links** is only required if `Enabled` is true and must include uri schema, host and port of the resource server (eg. http://localhost:5000).
 
 `AddCorsOption` is used in order to include it in your application.
+
+
+#### ApiGenericMsg 
+ApiGenericMsg present you with a default message template and better resopnse type
+Can easly be used in controllers, `ApiGenericMsg.OnEntityCreateSuccess<T>(dto, EntityName)`.
+
+```
+ public `ApiGenericResponse<Car>` CreateRecord([FromBody] Car dto)
+ {
+     // save to db & return 
+     return ApiGenericMsg.OnEntityCreateSuccess<Car>(dto, Entity);
+  }
+```
