@@ -50,7 +50,7 @@ Easy Doc is used for API documentation.
       "clientSecret": "PeRstRe*$^",
       "issuerUri": "http://example/AuthServer",
       "requireHttpsMetadata": false,
-      "Folder": "", //"",
+      "Folder": "",
       "filterClassName": "AuthorizeCheckOperationFilter",
       "Contact": {
         "Name": "Michael Ameyaw",
