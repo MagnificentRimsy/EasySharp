@@ -109,15 +109,8 @@ Input Trimmer helps trim model object before saving to db. Available trimers sup
 #### ApiGenericMsg 
 ApiGenericMsg present you with a default message template and better resopnse type.
 And can easly be used in controllers by calling `ApiGenericMsg.OnEntityCreateSuccess<T>(dto, EntityName)`.
-Available CRUD message template,
- 
- - OnEntityCreateSuccess
- - OnEntityCreateError
- - OnEntityDeleteSuccess
- - OnEntityDeleteError
- - OnEntityUpdateSuccess
- - OnEntityUpdateError .. etc
- 
+Available CRUD message template are **OnEntityCreateSuccess** , **OnEntityCreateError**, **OnEntityDeleteSuccess**, **OnEntityDeleteError**, 
+**OnEntityUpdateSuccess**, **OnEntityUpdateError** .. etc
 
 ```
  [HttpPost]
