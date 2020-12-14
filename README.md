@@ -1,9 +1,36 @@
 # EasySharp
-Library Infrastuctures with Easy-Documentation, Cors, CQRS pattern support, easy swagger config etc..
+This library aims to provide an easy way in configuring and developing .netcore application.
 
    [I've written a short Medium post about this repository](https://medium.com)
    
 Find the latest at: https://github.com/mkojoa/EasySharp
+
+## Get Started
+`AddEasySharp()` & `UseEasySharp()` must be injected in `ConfigureServices` & `Configure` method in the `Startup` class respectively.
+Basic Example
+
+- ConfigureServices
+
+   ```
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services
+                .AddEasySharp();
+        }
+   ```
+
+- Configure
+
+   ```
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            if (env.IsDevelopment())
+                app.UseDeveloperExceptionPage();
+
+            app
+                .UseEasySharp();
+        }
+   ```
 
 ###### > EasySharp Library repository is work in progress.
 
@@ -11,7 +38,7 @@ Find the latest at: https://github.com/mkojoa/EasySharp
 - [x] [EasyDoc](#EasyDoc)
 - [X] [InputTrimmer](#InputTrimmer)
 - [X] [Cors](#Cors)
-- [~~ApiGenericMsg~~](#ApiGenericMsg)
+- [X] [ApiGenericMsg](#ApiGenericMsg)
 - [~~XXS~~](#XXS)
 - [~~Pagination~~](#Pagination)
 - [~~Payment~~](#Payment)
@@ -79,10 +106,8 @@ Input Trimmer helps trim model object before saving to db. Available trimers sup
  [HttpPost]
  [TrimInput]
  [LowerInput]
- public IActionResult CreateRecord([FromBody] WeatherForecast model)
- {
-     // save to db & return
- }
+ public IActionResult CreateRecord([FromBody] Car model)
+ { /* code here */ }
  ```
  
  #### Cors 
@@ -104,3 +129,16 @@ Input Trimmer helps trim model object before saving to db. Available trimers sup
 - **Links** is only required if `Enabled` is true and must include uri schema, host and port of the resource server (eg. http://localhost:5000).
 
 `AddCorsOption` is used in order to include it in your application.
+
+
+#### ApiGenericMsg 
+ApiGenericMsg present you with a default message template and better resopnse type.
+And can easly be used in controllers by calling `ApiGenericMsg.OnEntityCreateSuccess<T>(dto, EntityName)`.
+Available CRUD message template are **OnEntityCreateSuccess** , **OnEntityCreateError**, **OnEntityDeleteSuccess**, **OnEntityDeleteError**, 
+**OnEntityUpdateSuccess**, **OnEntityUpdateError** .. etc
+
+```
+ [HttpPost]
+ public ApiGenericResponse<Car> CreateRecord([FromBody] Car dto)
+ {   return ApiGenericMsg.OnEntityCreateSuccess<Car>(dto, Entity); }
+```
