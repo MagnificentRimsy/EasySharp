@@ -1,9 +1,36 @@
 # EasySharp
-Library Infrastuctures with Easy-Documentation, Cors, CQRS pattern support, easy swagger config etc..
+This library aims to provide an easy way in configuring and developing .netcore application.
 
    [I've written a short Medium post about this repository](https://medium.com)
    
 Find the latest at: https://github.com/mkojoa/EasySharp
+
+## Get Started
+`AddEasySharp()` & `UseEasySharp()` must be injected in `ConfigureServices` & `Configure` method in the `Startup` class respectively.
+Basic Example
+
+- ConfigureServices
+
+   ```
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services
+                .AddEasySharp();
+        }
+   ```
+
+- Configure
+
+   ```
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            if (env.IsDevelopment())
+                app.UseDeveloperExceptionPage();
+
+            app
+                .UseEasySharp();
+        }
+   ```
 
 ###### > EasySharp Library repository is work in progress.
 
