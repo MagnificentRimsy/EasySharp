@@ -11,7 +11,7 @@ Find the latest at: https://github.com/mkojoa/EasySharp
 - [x] [EasyDoc](#EasyDoc)
 - [X] [InputTrimmer](#InputTrimmer)
 - [X] [Cors](#Cors)
-- [ApiGenericMsg](#ApiGenericMsg)
+- [X] [ApiGenericMsg](#ApiGenericMsg)
 - [~~XXS~~](#XXS)
 - [~~Pagination~~](#Pagination)
 - [~~Payment~~](#Payment)
@@ -111,7 +111,8 @@ ApiGenericMsg present you with a default message template and better resopnse ty
 Can easly be used in controllers, `ApiGenericMsg.OnEntityCreateSuccess<T>(dto, EntityName)`.
 
 ```
- public `ApiGenericResponse<Car>` CreateRecord([FromBody] Car dto)
+ [HttpPost]
+ public ApiGenericResponse<Car> CreateRecord([FromBody] Car dto)
  {
      // save to db & return 
      return ApiGenericMsg.OnEntityCreateSuccess<Car>(dto, Entity);
