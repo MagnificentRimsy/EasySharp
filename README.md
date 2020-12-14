@@ -107,9 +107,7 @@ Input Trimmer helps trim model object before saving to db. Available trimers sup
  [TrimInput]
  [LowerInput]
  public IActionResult CreateRecord([FromBody] Car model)
- {
-     // save to db & return
- }
+ { /* code here */ }
  ```
  
  #### Cors 
@@ -142,8 +140,5 @@ Available CRUD message template are **OnEntityCreateSuccess** , **OnEntityCreate
 ```
  [HttpPost]
  public ApiGenericResponse<Car> CreateRecord([FromBody] Car dto)
- {
-     // save to db & return 
-     return ApiGenericMsg.OnEntityCreateSuccess<Car>(dto, Entity);
-  }
+ {   return ApiGenericMsg.OnEntityCreateSuccess<Car>(dto, Entity); }
 ```
