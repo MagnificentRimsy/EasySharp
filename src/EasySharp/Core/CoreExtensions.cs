@@ -9,7 +9,7 @@ namespace EasySharp.Core
     {
         
 
-        public static IServiceCollection AddEasyCloud(this IServiceCollection services, params Type[] types)
+        public static IServiceCollection AddEasySharp(this IServiceCollection services, params Type[] types)
         {
             services.AddOptions();
 
@@ -20,7 +20,7 @@ namespace EasySharp.Core
             return services;
         }
 
-        public static IApplicationBuilder UseEasyCloud(this IApplicationBuilder app)
+        public static IApplicationBuilder UseEasySharp(this IApplicationBuilder app)
         {
             app.UseStaticFiles();
             app.UseRouting();

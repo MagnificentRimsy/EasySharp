@@ -28,7 +28,7 @@ namespace Easy.Demo
         public void ConfigureServices(IServiceCollection services)
         {
             services
-                .AddEasyCloud()
+                .AddEasySharp()
                 .AddDocs(Configuration)
                 .AddCorsOption();
         }
@@ -42,7 +42,7 @@ namespace Easy.Demo
             }
 
             app
-                .UseEasyCloud()
+                .UseEasySharp()
                 .UseDocs(Configuration);
         }
     }
