@@ -9,12 +9,12 @@ namespace EasySharp.Core.Messages
     public static class ApiGenericMsg
     {
         /// <summary>
-        /// 
+        /// Return server error message
         /// </summary>
         public static string ServerError => "Server Error Occurred";
 
         /// <summary>
-        /// 
+        /// Return processing error message
         /// </summary>
         public static string ProcessingError =>
             "An error occured while processing your request. Contact your administrator";

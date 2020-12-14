@@ -24,8 +24,6 @@ namespace EasySharp.Swagger
             var options = new SwaggerOptions();
             Configuration.GetSection(nameof(SwaggerOptions)).Bind(options);
 
-
-
             return services.AddSwaggerDocs(options);
         }
 
