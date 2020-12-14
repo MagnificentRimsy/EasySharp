@@ -79,7 +79,7 @@ Input Trimmer helps trim model object before saving to db. Available trimers sup
  [HttpPost]
  [TrimInput]
  [LowerInput]
- public IActionResult CreateRecord([FromBody] WeatherForecast model)
+ public IActionResult CreateRecord([FromBody] Car model)
  {
      // save to db & return
  }
@@ -107,8 +107,17 @@ Input Trimmer helps trim model object before saving to db. Available trimers sup
 
 
 #### ApiGenericMsg 
-ApiGenericMsg present you with a default message template and better resopnse type
-Can easly be used in controllers, `ApiGenericMsg.OnEntityCreateSuccess<T>(dto, EntityName)`.
+ApiGenericMsg present you with a default message template and better resopnse type.
+And can easly be used in controllers by calling `ApiGenericMsg.OnEntityCreateSuccess<T>(dto, EntityName)`.
+Available CRUD message template,
+ 
+ - OnEntityCreateSuccess
+ - OnEntityCreateError
+ - OnEntityDeleteSuccess
+ - OnEntityDeleteError
+ - OnEntityUpdateSuccess
+ - OnEntityUpdateError .. etc
+ 
 
 ```
  [HttpPost]
