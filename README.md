@@ -5,6 +5,8 @@ This library aims to provide an easy way in configuring and developing .netcore 
    
 Find the latest at: https://github.com/mkojoa/EasySharp
 
+###### > EasySharp Library repository is work in progress.
+
 ## Get Started
 `AddEasySharp()` & `UseEasySharp()` must be injected in `ConfigureServices` & `Configure` method in the `Startup` class respectively.
 Basic Example
@@ -31,8 +33,6 @@ Basic Example
                 .UseEasySharp();
         }
    ```
-
-###### > EasySharp Library repository is work in progress.
 
 ## Features
 - [x] [EasyDoc](#EasyDoc)
