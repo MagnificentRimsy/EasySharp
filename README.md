@@ -43,7 +43,6 @@ Basic Example
 - [~~Payment~~](#Payment)
 - [~~Caching~~](#Caching)
 - [~~Consul~~](#Consul)
-- [~~HelperUntilities~~](#HelperUntilities)
 - [~~Logging~~](#Logging)
 - [~~CQRS~~](#CQRS)
 - [~~EfCore~~](#EfCore)
@@ -133,11 +132,25 @@ Input Trimmer helps trim model object before saving to db. Available trimers sup
 #### ApiGenericMsg 
 ApiGenericMsg present you with a default message template and better resopnse type.
 And can easly be used in controllers by calling `ApiGenericMsg.OnEntityCreateSuccess<T>(dto, EntityName)`.
-Available CRUD message template are **OnEntityCreateSuccess** , **OnEntityCreateError**, **OnEntityDeleteSuccess**, **OnEntityDeleteError**, 
+Available CRUD message template are 
+**OnEntityCreateSuccess** , **OnEntityCreateError**, **OnEntityDeleteSuccess**, **OnEntityDeleteError**, 
 **OnEntityUpdateSuccess**, **OnEntityUpdateError** .. etc
 
 ```
  [HttpPost("CreateRecord")]
  public ApiGenericResponse<Car> CreateRecord([FromBody] Car dto) 
      => ApiGenericMsg.OnEntityCreateSuccess<Car>(dto, EntityName);
+```
+Response type from ApiGenericMessage becomes
+
+```
+{
+  "status": 0,
+  "data": {
+    "brand": "string",
+    "model": "string",
+    "year": 0
+  },
+  "message": "string"
+}
 ```
