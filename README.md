@@ -138,7 +138,7 @@ Available CRUD message template are **OnEntityCreateSuccess** , **OnEntityCreate
 **OnEntityUpdateSuccess**, **OnEntityUpdateError** .. etc
 
 ```
- [HttpPost]
- public ApiGenericResponse<Car> CreateRecord([FromBody] Car dto)
- {   return ApiGenericMsg.OnEntityCreateSuccess<Car>(dto, Entity); }
+     [HttpPost("CreateRecord")]
+     public ApiGenericResponse<Car> CreateRecord([FromBody] Car dto) 
+         => ApiGenericMsg.OnEntityCreateSuccess<Car>(dto, EntityName);
 ```
