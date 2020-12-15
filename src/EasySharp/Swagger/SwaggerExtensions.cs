@@ -28,9 +28,9 @@ namespace EasySharp.Swagger
         }
 
         public static IServiceCollection AddSwaggerDocs(this IServiceCollection services,
-            Func<ISwaggerOptionsBuilder, ISwaggerOptionsBuilder> buildOptions)
+            Func<ISwaggerOptions, ISwaggerOptions> buildOptions)
         {
-            var options = buildOptions(new SwaggerOptionsBuilder()).Build();
+            var options = buildOptions(new SwaggersBuilder()).Build();
             return services.AddSwaggerDocs(options);
         }
 
