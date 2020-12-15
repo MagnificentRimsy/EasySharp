@@ -14,24 +14,23 @@ Basic Example
 - ConfigureServices
 
    ```
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services
-                .AddEasySharp();
-        }
+   public void ConfigureServices(IServiceCollection services)
+   {
+       services
+           .AddEasySharp();
+   }
    ```
 
 - Configure
 
    ```
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        {
-            if (env.IsDevelopment())
-                app.UseDeveloperExceptionPage();
-
-            app
-                .UseEasySharp();
-        }
+   public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+   {
+       if (env.IsDevelopment())
+           app.UseDeveloperExceptionPage();
+       app
+           .UseEasySharp();
+   }
    ```
 
 ## Features
@@ -138,7 +137,7 @@ Available CRUD message template are **OnEntityCreateSuccess** , **OnEntityCreate
 **OnEntityUpdateSuccess**, **OnEntityUpdateError** .. etc
 
 ```
-     [HttpPost("CreateRecord")]
-     public ApiGenericResponse<Car> CreateRecord([FromBody] Car dto) 
-         => ApiGenericMsg.OnEntityCreateSuccess<Car>(dto, EntityName);
+ [HttpPost("CreateRecord")]
+ public ApiGenericResponse<Car> CreateRecord([FromBody] Car dto) 
+     => ApiGenericMsg.OnEntityCreateSuccess<Car>(dto, EntityName);
 ```
