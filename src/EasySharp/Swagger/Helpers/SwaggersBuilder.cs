@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EasySharp.Swagger.Builders
+namespace EasySharp.Swagger.Helpers
 {
     internal sealed class SwaggersBuilder : ISwaggerOptions
     {

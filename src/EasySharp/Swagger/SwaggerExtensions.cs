@@ -1,9 +1,9 @@
-﻿using IdentityServer4.AccessTokenValidation;
+﻿using EasySharp.Swagger.Helpers;
+using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
-using EasySharp.Swagger.Builders;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;

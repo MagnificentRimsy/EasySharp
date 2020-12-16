@@ -26,26 +26,19 @@ namespace Easy.Demo.Controllers
         [HttpPost("CreateRecordTrimBefore")]
         [TrimInput]
         [LowerInput]
-        public IActionResult CreateRecordTrimBefore([FromBody] Car dto)
-        {
-            // save to db & return 
-            return Ok(dto);
-        }
+        public IActionResult CreateRecordTrimBefore([FromBody] Car dto) 
+            => Ok(dto);
+        
 
 
         [HttpPost("CreateRecord")]
-        public ApiGenericResponse<Car> CreateRecord([FromBody] Car dto)
-        {
-            // save to db & return 
-            return ApiGenericMsg.OnEntityCreateSuccess<Car>(dto, Entity);
-        }
+        public ApiGenericResponse<Car> CreateRecord([FromBody] Car dto) 
+            => ApiGenericMsg.OnEntityCreateSuccess<Car>(dto, Entity);
+        
 
         //List Implementation testing with List & IEnumerable
         [HttpPost("CreateRecordCollection")]
-        public ApiGenericResponse<IEnumerable<Car>> CreateRecordCollection([FromBody] IEnumerable<Car> dto)
-        {
-            // save to db & return 
-            return ApiGenericMsg.OnEntityCreateSuccess<IEnumerable<Car>>(dto, Entity);
-        }
+        public ApiGenericResponse<IEnumerable<Car>> CreateRecordCollection([FromBody] IEnumerable<Car> dto) => 
+            ApiGenericMsg.OnEntityCreateSuccess<IEnumerable<Car>>(dto, Entity);
     }
 }
