@@ -5,6 +5,8 @@ This library aims to provide an easy way in configuring and developing .netcore 
    
 Find the latest at: https://github.com/mkojoa/EasySharp
 
+###### > EasySharp Library repository is work in progress.
+
 ## Get Started
 `AddEasySharp()` & `UseEasySharp()` must be injected in `ConfigureServices` & `Configure` method in the `Startup` class respectively.
 Basic Example
@@ -12,27 +14,24 @@ Basic Example
 - ConfigureServices
 
    ```
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services
-                .AddEasySharp();
-        }
+   public void ConfigureServices(IServiceCollection services)
+   {
+       services
+           .AddEasySharp();
+   }
    ```
 
 - Configure
 
    ```
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        {
-            if (env.IsDevelopment())
-                app.UseDeveloperExceptionPage();
-
-            app
-                .UseEasySharp();
-        }
+   public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+   {
+       if (env.IsDevelopment())
+           app.UseDeveloperExceptionPage();
+       app
+           .UseEasySharp();
+   }
    ```
-
-###### > EasySharp Library repository is work in progress.
 
 ## Features
 - [x] [EasyDoc](#EasyDoc)
@@ -44,7 +43,6 @@ Basic Example
 - [~~Payment~~](#Payment)
 - [~~Caching~~](#Caching)
 - [~~Consul~~](#Consul)
-- [~~HelperUntilities~~](#HelperUntilities)
 - [~~Logging~~](#Logging)
 - [~~CQRS~~](#CQRS)
 - [~~EfCore~~](#EfCore)
@@ -134,11 +132,25 @@ Input Trimmer helps trim model object before saving to db. Available trimers sup
 #### ApiGenericMsg 
 ApiGenericMsg present you with a default message template and better resopnse type.
 And can easly be used in controllers by calling `ApiGenericMsg.OnEntityCreateSuccess<T>(dto, EntityName)`.
-Available CRUD message template are **OnEntityCreateSuccess** , **OnEntityCreateError**, **OnEntityDeleteSuccess**, **OnEntityDeleteError**, 
+
+Available CRUD message template are  **OnEntityCreateSuccess** , **OnEntityCreateError**, **OnEntityDeleteSuccess**, **OnEntityDeleteError**, 
 **OnEntityUpdateSuccess**, **OnEntityUpdateError** .. etc
 
 ```
- [HttpPost]
- public ApiGenericResponse<Car> CreateRecord([FromBody] Car dto)
- {   return ApiGenericMsg.OnEntityCreateSuccess<Car>(dto, Entity); }
+ [HttpPost("CreateRecord")]
+ public ApiGenericResponse<Car> CreateRecord([FromBody] Car dto) 
+     => ApiGenericMsg.OnEntityCreateSuccess<Car>(dto, EntityName);
+```
+Response type from ApiGenericMessage becomes
+
+```
+{
+  "status": 0,
+  "data": {
+    "brand": "string",
+    "model": "string",
+    "year": 0
+  },
+  "message": "string"
+}
 ```
