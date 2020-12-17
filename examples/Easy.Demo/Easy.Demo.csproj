@@ -12,9 +12,4 @@
     <ProjectReference Include="..\..\src\EasySharp\EasySharp.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Queries\Handler\" />
-    <Folder Include="Queries\Query\" />
-  </ItemGroup>
-
 </Project>

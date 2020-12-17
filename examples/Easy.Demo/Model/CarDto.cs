@@ -1,15 +1,9 @@
-﻿using EasySharp.Core.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Easy.Demo.Models
+﻿namespace Easy.Demo.Models
 {
     /// <summary>
     /// 
     /// </summary>
-    public class CarDto : IEntity
+    public class CarDto
     {
         public string Brand { get; set; }
         public string Model { get; set; }

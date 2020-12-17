@@ -8,7 +8,7 @@ namespace Easy.Demo.Commands.Command
     /// <summary>
     /// 
     /// </summary>
-    public class CreateCarCommand : ICommand<CarDto>
+    public class CreateCarCommand : ICommand<IEnumerable<CarDto>>
     {
         public string Brand { get; set; }
         public string Model { get; set; }

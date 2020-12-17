@@ -14,12 +14,31 @@
             
             </summary>
         </member>
+        <member name="M:Easy.Demo.Commands.Handler.CreateCarHandler.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Easy.Demo.Commands.Handler.CreateCarHandler.Handle(Easy.Demo.Commands.Command.CreateCarCommand,System.Threading.CancellationToken)">
+            <summary>
+            
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
         <member name="M:Easy.Demo.Controllers.DemoController.#ctor(EasySharp.Core.Queries.IQueryBus,EasySharp.Core.Commands.ICommandBus)">
             <summary>
             
             </summary>
             <param name="queryBus"></param>
             <param name="commandBus"></param>
+        </member>
+        <member name="M:Easy.Demo.Controllers.DemoController.GetCars(System.Threading.CancellationToken)">
+            <summary>
+            Query - CRQS
+            </summary>
+            <returns></returns>
         </member>
         <member name="M:Easy.Demo.Controllers.DemoController.CreateRecordTrimBefore(Easy.Demo.Models.CarDto)">
             <summary>
@@ -42,7 +61,7 @@
             <param name="dto"></param>
             <returns></returns>
         </member>
-        <member name="M:Easy.Demo.Controllers.DemoController.CreateCarRecord(Easy.Demo.Models.CarDto,System.Threading.CancellationToken)">
+        <member name="M:Easy.Demo.Controllers.DemoController.CreateCarRecord(System.Collections.Generic.IEnumerable{Easy.Demo.Models.CarDto},System.Threading.CancellationToken)">
             <summary>
             
             </summary>
@@ -62,6 +81,29 @@
             <returns></returns>
         </member>
         <member name="T:Easy.Demo.Models.CarDto">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Easy.Demo.Queries.Handler.GetAllCarsHandler">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Easy.Demo.Queries.Handler.GetAllCarsHandler.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Easy.Demo.Queries.Handler.GetAllCarsHandler.Handle(Easy.Demo.Queries.Query.GetAllCarsQuery,System.Threading.CancellationToken)">
+            <summary>
+            
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Easy.Demo.Queries.Query.GetAllCarsQuery">
             <summary>
             
             </summary>

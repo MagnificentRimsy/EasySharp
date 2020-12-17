@@ -1,5 +1,6 @@
 ﻿using Easy.Demo.Commands.Command;
 using Easy.Demo.Models;
+using Easy.Demo.Queries.Query;
 using EasySharp.Core.Attributes;
 using EasySharp.Core.Commands;
 using EasySharp.Core.Helpers;
@@ -36,6 +37,21 @@ namespace Easy.Demo.Controllers
         {
             _queryBus = queryBus;
             _commandBus = commandBus;
+        }
+
+        /// <summary>
+        /// Query - CRQS
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("GetCars")]
+        public async Task<IActionResult> GetCars(CancellationToken cancellationToken)
+        {
+            var query = new GetAllCarsQuery{};
+
+            var result = await _queryBus.Send(query, cancellationToken);
+
+            return Ok(result);
+
         }
 
         /// <summary>
@@ -76,10 +92,10 @@ namespace Easy.Demo.Controllers
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         [HttpPost("CreateCarRecord")]
-        public async Task<ApiGenericResponse<CarDto>> CreateCarRecord([FromBody] CarDto dto, CancellationToken cancellationToken)
+        public async Task<ApiGenericResponse<IEnumerable<CarDto>>> CreateCarRecord([FromBody] IEnumerable<CarDto> dto, CancellationToken cancellationToken)
         {
             //dto -> to -> command type
-            var command = Mapping.onMap<CarDto, CreateCarCommand>(dto);
+            var command = Mapping.onMap<IEnumerable<CarDto>, CreateCarCommand>(dto);
 
             var result = await _commandBus.Send(command, cancellationToken);
 
