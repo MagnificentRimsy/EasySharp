@@ -39,7 +39,7 @@ Basic Example
 - [X] [Cors](#Cors)
 - [X] [ApiGenericMsg](#ApiGenericMsg)
 - [X] [XXS](#XXS)
-- [~~CQRS~~](#CQRS)
+- [X] [CQRS](#CQRS)
 - [~~Pagination~~](#Pagination)
 - [~~Payment~~](#Payment)
 - [~~Caching~~](#Caching)
@@ -139,7 +139,7 @@ Available CRUD message template are  **OnEntityCreateSuccess** , **OnEntityCreat
 ```
  [HttpPost("CreateRecord")]
  public ApiGenericResponse<Car> CreateRecord([FromBody] Car dto) 
-     => ApiGenericMsg.OnEntityCreateSuccess<Car>(dto, EntityName);
+     => ApiGenericMsg.OnEntityCreateSuccess(dto, EntityName);
 ```
 Response type from ApiGenericMessage becomes
 
@@ -163,3 +163,5 @@ By default XXS protection is set to `false`. You can enable it by adding the opt
     "Enabled": true
   }
 ```
+
+#### CQRS
