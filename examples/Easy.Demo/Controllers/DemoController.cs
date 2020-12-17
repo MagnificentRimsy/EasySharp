@@ -23,6 +23,11 @@ namespace Easy.Demo.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// Trim Method
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
         [HttpPost("CreateRecordTrimBefore")]
         [TrimInput]
         [LowerInput]
@@ -30,13 +35,21 @@ namespace Easy.Demo.Controllers
             => Ok(dto);
         
 
-
+        /// <summary>
+        /// Api Generic Msg - Object
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
         [HttpPost("CreateRecord")]
         public ApiGenericResponse<Car> CreateRecord([FromBody] Car dto) 
             => ApiGenericMsg.OnEntityCreateSuccess<Car>(dto, Entity);
         
 
-        //List Implementation testing with List & IEnumerable
+        /// <summary>
+        ///  Api Generic Msg - Array Of Object
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
         [HttpPost("CreateRecordCollection")]
         public ApiGenericResponse<IEnumerable<Car>> CreateRecordCollection([FromBody] IEnumerable<Car> dto) => 
             ApiGenericMsg.OnEntityCreateSuccess<IEnumerable<Car>>(dto, Entity);
