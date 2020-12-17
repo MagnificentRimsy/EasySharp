@@ -38,7 +38,7 @@ Basic Example
 - [X] [InputTrimmer](#InputTrimmer)
 - [X] [Cors](#Cors)
 - [X] [ApiGenericMsg](#ApiGenericMsg)
-- [~~XXS~~](#XXS)
+- [XXS](#XXS)
 - [~~Pagination~~](#Pagination)
 - [~~Payment~~](#Payment)
 - [~~Caching~~](#Caching)
@@ -51,7 +51,7 @@ Basic Example
 #### EasyDoc
 Easy Doc is used for API documentation.
 
-`.AddDocs(Configuration)` and `.UseDocs(Configuration)` is used to include swagger in the application.
+`.AddDocs()` and `.UseDocs()` is used to include swagger in the application.
  Security option can be enable or disabled by passing `true` or `false` to IncludeSecurity property.
  
  ```
@@ -153,4 +153,13 @@ Response type from ApiGenericMessage becomes
   },
   "message": "string"
 }
+```
+
+#### XXS
+By default XXS protection is set to `false`. You can enable it by adding the option below in your `app.settings.json` file.
+
+```
+ "AntiXssOptions": {
+    "Enabled": true
+  }
 ```
