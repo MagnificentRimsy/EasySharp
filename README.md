@@ -38,7 +38,7 @@ Basic Example
 - [X] [InputTrimmer](#InputTrimmer)
 - [X] [Cors](#Cors)
 - [X] [ApiGenericMsg](#ApiGenericMsg)
-- [~~XXS~~](#XXS)
+- [XXS](#XXS)
 - [~~Pagination~~](#Pagination)
 - [~~Payment~~](#Payment)
 - [~~Caching~~](#Caching)
