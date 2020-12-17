@@ -11,6 +11,10 @@
     ]
   },
 
+  "AntiXssOptions": {
+    "Enabled": true
+  },
+
   "SwaggerOptions": {
     "enabled": true,
     "reDocEnabled": false,

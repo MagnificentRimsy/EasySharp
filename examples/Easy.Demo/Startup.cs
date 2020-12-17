@@ -29,7 +29,7 @@ namespace Easy.Demo
         {
             services
                 .AddEasySharp()
-                .AddDocs(Configuration)
+                .AddDocs()
                 .AddCorsOption();
         }
 
@@ -43,7 +43,7 @@ namespace Easy.Demo
 
             app
                 .UseEasySharp()
-                .UseDocs(Configuration);
+                .UseDocs();
         }
     }
 }

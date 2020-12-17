@@ -8,11 +8,8 @@ namespace EasySharp.Core.AntiXss
     public static class AntiXssMiddlewareExtension
     {
         //app.UseAntiXssMiddleware();
-        public static IApplicationBuilder UseAntiXssMiddleware(this IApplicationBuilder builder)
-        //public static IApplicationBuilder UseAntiXssMiddleware(this IApplicationBuilder builder, IConfiguration Configuration)
+        public static IApplicationBuilder UseAntiXssMiddleware(this IApplicationBuilder builder, IConfigurationRoot Configuration)
         {
-            var servi = builder.ApplicationServices;
-            servi.GetService();
             var options = new AntiXssOptions();
             Configuration.GetSection(nameof(AntiXssOptions)).Bind(options);
 

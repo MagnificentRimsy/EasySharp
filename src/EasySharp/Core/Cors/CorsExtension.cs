@@ -28,9 +28,14 @@ namespace EasySharp.Core.Cors
         /// <returns></returns>
         public static IServiceCollection AddCorsOption(this IServiceCollection services)
         {
-            EasySharpServicesHelper.Services = services;
+            
 
-            EasySharpServicesHelper.Initialize();
+            if (EasySharpServicesHelper.IsInitialized == false)
+            {
+                EasySharpServicesHelper.Services = services;
+                EasySharpServicesHelper.Initialize();
+            }
+
             Configuration = EasySharpServicesHelper.Builder();
 
             var options = new CorsOptions();

@@ -1,4 +1,5 @@
-﻿using EasySharp.Swagger.Helpers;
+﻿using EasySharp.Core.Helpers;
+using EasySharp.Swagger.Helpers;
 using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
@@ -14,12 +15,20 @@ namespace EasySharp.Swagger
 {
     public static class SwaggerExtensions
     {
+        public static IConfigurationRoot Configuration { get; set; }
         private const string RegistryName = "docs.swagger";
 
         private static ConcurrentDictionary<string, bool> _registry = new ConcurrentDictionary<string, bool>();
 
-        public static IServiceCollection AddDocs(this IServiceCollection services, IConfiguration Configuration)
+        public static IServiceCollection AddDocs(this IServiceCollection services)
         {
+            if (EasySharpServicesHelper.IsInitialized == false)
+            {
+                EasySharpServicesHelper.Services = services;
+                EasySharpServicesHelper.Initialize();
+            }
+
+            Configuration = EasySharpServicesHelper.Builder();
 
             var options = new SwaggerOptions();
             Configuration.GetSection(nameof(SwaggerOptions)).Bind(options);
@@ -133,8 +142,10 @@ namespace EasySharp.Swagger
             return services;
         }
 
-        public static IApplicationBuilder UseDocs(this IApplicationBuilder app, IConfiguration Configuration)
+        public static IApplicationBuilder UseDocs(this IApplicationBuilder app)
         {
+            Configuration = EasySharpServicesHelper.Builder();
+
             var options = new SwaggerOptions();
             Configuration.GetSection(nameof(SwaggerOptions)).Bind(options);
 
