@@ -2,6 +2,6 @@
 {
     public class AntiXssOptions
     {
-        public bool Enabled { get; set; }
+        public bool Enabled { get; set; } = false;
     }
 }

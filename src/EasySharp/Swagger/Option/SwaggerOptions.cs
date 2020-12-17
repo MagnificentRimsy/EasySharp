@@ -1,6 +1,4 @@
-﻿using Microsoft.OpenApi.Models;
-using EasySharp.Swagger.Option;
-namespace EasySharp.Swagger
+﻿namespace EasySharp.Swagger.Option
 {
     public class SwaggerOptions
     {

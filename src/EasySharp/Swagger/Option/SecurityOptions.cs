@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EasySharp.Swagger.Option
+﻿namespace EasySharp.Swagger.Option
 {
     public class SecurityOptions
     {

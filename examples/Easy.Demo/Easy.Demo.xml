@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Easy.Demo</name>
+    </assembly>
+    <members>
+        <member name="M:Easy.Demo.Controllers.DemoController.CreateRecordTrimBefore(Easy.Demo.Models.Car)">
+            <summary>
+            Trim Method
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy.Demo.Controllers.DemoController.CreateRecord(Easy.Demo.Models.Car)">
+            <summary>
+            Api Generic Msg - Object
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Easy.Demo.Controllers.DemoController.CreateRecordCollection(System.Collections.Generic.IEnumerable{Easy.Demo.Models.Car})">
+            <summary>
+             Api Generic Msg - Array Of Object
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Easy.Demo.Startup">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Easy.Demo.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="P:Easy.Demo.Startup.Configuration">
+            <summary>
+             Configuration
+            </summary>
+        </member>
+        <member name="M:Easy.Demo.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime. Use this method to add services to the container.
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:Easy.Demo.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
+    </members>
+</doc>

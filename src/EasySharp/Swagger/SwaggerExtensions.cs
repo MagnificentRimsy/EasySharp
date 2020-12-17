@@ -1,5 +1,6 @@
 ﻿using EasySharp.Core.Helpers;
 using EasySharp.Swagger.Helpers;
+using EasySharp.Swagger.Option;
 using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
@@ -32,19 +33,6 @@ namespace EasySharp.Swagger
 
             var options = new SwaggerOptions();
             Configuration.GetSection(nameof(SwaggerOptions)).Bind(options);
-
-            return services.AddSwaggerDocs(options);
-        }
-
-        public static IServiceCollection AddSwaggerDocs(this IServiceCollection services,
-            Func<ISwaggerOptions, ISwaggerOptions> buildOptions)
-        {
-            var options = buildOptions(new SwaggersBuilder()).Build();
-            return services.AddSwaggerDocs(options);
-        }
-
-        public static IServiceCollection AddSwaggerDocs(this IServiceCollection services, SwaggerOptions options)
-        {
 
             var dt = _registry.TryAdd(RegistryName, true);
 
@@ -83,18 +71,13 @@ namespace EasySharp.Swagger
 
                 if (options.SecurityOptions.XmlDoc)
                 {
-                    //string baseDirectory = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location).ToString();
-                    var baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                    var commentsFileName = Assembly.GetExecutingAssembly().GetName().Name + ".XML";
 
-                    //List<Assembly> usedAssemblies = Assembly.GetExecutingAssembly().GetReferencedAssemblies().Select((item) => Assembly.Load(item)).ToList();
+                    // curret project name not libraryName
+                    var commentsFileName = $"{Assembly.GetEntryAssembly().GetName().Name}.XML";
 
-                    ////var result = baseDirectory.Replace(baseDirectory + "\\", "");
-                    ////baseDirectory = baseDirectory.Substring(0, baseDirectory.Length - 24);
+                    var commentsFile = Path.Combine(System.AppContext.BaseDirectory, commentsFileName);
 
-
-                    //var commentsFile = Path.Combine(baseDirectory, commentsFileName);
-                    //c.IncludeXmlComments(commentsFile);
+                    c.IncludeXmlComments(commentsFile);
                 }
 
                 if (options.IncludeSecurity)
