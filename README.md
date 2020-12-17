@@ -165,3 +165,4 @@ By default XXS protection is set to `false`. You can enable it by adding the opt
 ```
 
 #### CQRS
+CQRS stands for “Command Query Responsibility Segregation”. As the acronym suggests, it’s all about splitting the responsibility of commands (saves) and queries (reads) into different models. Visit [https://martinfowler.com/bliki/CQRS.html] [CQRS Info] for more infomation
