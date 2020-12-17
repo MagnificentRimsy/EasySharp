@@ -1,5 +1,5 @@
 # EasySharp
-This library aims to provide an easy way in configuring and developing .netcore application.
+This library aims to provide an easy way in configuring and developing .netcore web api application.
 
    [I've written a short Medium post about this repository](https://medium.com)
    
