@@ -40,12 +40,12 @@ Basic Example
 - [X] [ApiGenericMsg](#ApiGenericMsg)
 - [X] [XXS](#XXS)
 - [X] [CQRS](#CQRS)
-- [~~Pagination~~](#Pagination)
-- [~~Payment~~](#Payment)
-- [~~Caching~~](#Caching)
-- [~~Consul~~](#Consul)
 - [~~Logging~~](#Logging)
 - [~~EfCore~~](#EfCore)
+- [~~Caching~~](#Caching)
+- [~~Consul~~](#Consul)
+- [~~Pagination~~](#Pagination)
+- [~~Payment~~](#Payment)
 - [~~HealthCheck~~](#HealthCheck)
       
 #### EasyDoc
