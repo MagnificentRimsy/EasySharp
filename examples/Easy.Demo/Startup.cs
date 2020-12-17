@@ -41,7 +41,7 @@ namespace Easy.Demo
         public void ConfigureServices(IServiceCollection services)
         {
             services
-                .AddEasySharp()
+                .AddEasySharp(typeof(Startup))
                 .AddDocs()
                 .AddCorsOption();
         }

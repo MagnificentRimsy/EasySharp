@@ -1,12 +1,20 @@
-﻿using Easy.Demo.Models;
+﻿using Easy.Demo.Commands.Command;
+using Easy.Demo.Models;
 using EasySharp.Core.Attributes;
+using EasySharp.Core.Commands;
+using EasySharp.Core.Helpers;
 using EasySharp.Core.Messages;
 using EasySharp.Core.Messages.Response;
+using EasySharp.Core.Queries;
+using EasySharp.Helpers;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Easy.Demo.Controllers
 {
@@ -14,13 +22,20 @@ namespace Easy.Demo.Controllers
     [Route("[controller]")]
     public class DemoController : ControllerBase
     {
-        public static string Entity => "Car"; 
+        public static string EntityName => "Car";
 
-        private readonly ILogger<DemoController> _logger;
+        private readonly IQueryBus _queryBus;
+        private readonly ICommandBus _commandBus;
 
-        public DemoController(ILogger<DemoController> logger)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="queryBus"></param>
+        /// <param name="commandBus"></param>
+        public DemoController(IQueryBus queryBus, ICommandBus commandBus)
         {
-            _logger = logger;
+            _queryBus = queryBus;
+            _commandBus = commandBus;
         }
 
         /// <summary>
@@ -31,7 +46,7 @@ namespace Easy.Demo.Controllers
         [HttpPost("CreateRecordTrimBefore")]
         [TrimInput]
         [LowerInput]
-        public IActionResult CreateRecordTrimBefore([FromBody] Car dto) 
+        public IActionResult CreateRecordTrimBefore([FromBody] CarDto dto) 
             => Ok(dto);
         
 
@@ -41,8 +56,8 @@ namespace Easy.Demo.Controllers
         /// <param name="dto"></param>
         /// <returns></returns>
         [HttpPost("CreateRecord")]
-        public ApiGenericResponse<Car> CreateRecord([FromBody] Car dto) 
-            => ApiGenericMsg.OnEntityCreateSuccess<Car>(dto, Entity);
+        public ApiGenericResponse<CarDto> CreateRecord([FromBody] CarDto dto) 
+            => ApiGenericMsg.OnEntityCreateSuccess(dto, EntityName);
         
 
         /// <summary>
@@ -51,7 +66,24 @@ namespace Easy.Demo.Controllers
         /// <param name="dto"></param>
         /// <returns></returns>
         [HttpPost("CreateRecordCollection")]
-        public ApiGenericResponse<IEnumerable<Car>> CreateRecordCollection([FromBody] IEnumerable<Car> dto) => 
-            ApiGenericMsg.OnEntityCreateSuccess<IEnumerable<Car>>(dto, Entity);
+        public ApiGenericResponse<IEnumerable<CarDto>> CreateRecordCollection([FromBody] IEnumerable<CarDto> dto) => 
+            ApiGenericMsg.OnEntityCreateSuccess(dto, EntityName);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        [HttpPost("CreateCarRecord")]
+        public async Task<ApiGenericResponse<CarDto>> CreateCarRecord([FromBody] CarDto dto, CancellationToken cancellationToken)
+        {
+            //dto -> to -> command type
+            var command = Mapping.onMap<CarDto, CreateCarCommand>(dto);
+
+            var result = await _commandBus.Send(command, cancellationToken);
+
+            return ApiGenericMsg.OnEntityCreateSuccess(result, EntityName);
+        }
     }
 }

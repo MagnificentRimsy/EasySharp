@@ -13,7 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Factory\" />
+    <Folder Include="Queries\Handler\" />
+    <Folder Include="Queries\Query\" />
   </ItemGroup>
 
 </Project>

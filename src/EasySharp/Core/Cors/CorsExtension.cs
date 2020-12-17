@@ -30,13 +30,13 @@ namespace EasySharp.Core.Cors
         {
             
 
-            if (EasySharpServicesHelper.IsInitialized == false)
+            if (EasySharpServices.IsInitialized == false)
             {
-                EasySharpServicesHelper.Services = services;
-                EasySharpServicesHelper.Initialize();
+                EasySharpServices.Services = services;
+                EasySharpServices.Initialize();
             }
 
-            Configuration = EasySharpServicesHelper.Builder();
+            Configuration = EasySharpServices.Builder();
 
             var options = new CorsOptions();
             Configuration.GetSection(nameof(CorsOptions)).Bind(options);
@@ -71,7 +71,7 @@ namespace EasySharp.Core.Cors
         /// <returns></returns>
         public static IApplicationBuilder UseCorsOption(this IApplicationBuilder app)
         {
-            Configuration = EasySharpServicesHelper.Builder();
+            Configuration = EasySharpServices.Builder();
 
             var options = new CorsOptions();
             Configuration.GetSection(nameof(CorsOptions)).Bind(options);

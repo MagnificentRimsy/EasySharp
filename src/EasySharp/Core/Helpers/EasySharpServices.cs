@@ -9,7 +9,7 @@ using System.Text;
 
 namespace EasySharp.Core.Helpers
 {
-    public static class EasySharpServicesHelper
+    public static class EasySharpServices
     {
         private static IWebHostEnvironment _env;
 

@@ -4,26 +4,67 @@
         <name>Easy.Demo</name>
     </assembly>
     <members>
-        <member name="M:Easy.Demo.Controllers.DemoController.CreateRecordTrimBefore(Easy.Demo.Models.Car)">
+        <member name="T:Easy.Demo.Commands.Command.CreateCarCommand">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Easy.Demo.Commands.Handler.CreateCarHandler">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Easy.Demo.Controllers.DemoController.#ctor(EasySharp.Core.Queries.IQueryBus,EasySharp.Core.Commands.ICommandBus)">
+            <summary>
+            
+            </summary>
+            <param name="queryBus"></param>
+            <param name="commandBus"></param>
+        </member>
+        <member name="M:Easy.Demo.Controllers.DemoController.CreateRecordTrimBefore(Easy.Demo.Models.CarDto)">
             <summary>
             Trim Method
             </summary>
             <param name="dto"></param>
             <returns></returns>
         </member>
-        <member name="M:Easy.Demo.Controllers.DemoController.CreateRecord(Easy.Demo.Models.Car)">
+        <member name="M:Easy.Demo.Controllers.DemoController.CreateRecord(Easy.Demo.Models.CarDto)">
             <summary>
             Api Generic Msg - Object
             </summary>
             <param name="dto"></param>
             <returns></returns>
         </member>
-        <member name="M:Easy.Demo.Controllers.DemoController.CreateRecordCollection(System.Collections.Generic.IEnumerable{Easy.Demo.Models.Car})">
+        <member name="M:Easy.Demo.Controllers.DemoController.CreateRecordCollection(System.Collections.Generic.IEnumerable{Easy.Demo.Models.CarDto})">
             <summary>
              Api Generic Msg - Array Of Object
             </summary>
             <param name="dto"></param>
             <returns></returns>
+        </member>
+        <member name="M:Easy.Demo.Controllers.DemoController.CreateCarRecord(Easy.Demo.Models.CarDto,System.Threading.CancellationToken)">
+            <summary>
+            
+            </summary>
+            <param name="dto"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Easy.Demo.Factories.Cars.CarFactory">
+            <summary>
+            create fake cars
+            </summary>
+        </member>
+        <member name="M:Easy.Demo.Factories.Cars.CarFactory.Create">
+            <summary>
+            Fake record
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Easy.Demo.Models.CarDto">
+            <summary>
+            
+            </summary>
         </member>
         <member name="T:Easy.Demo.Startup">
             <summary>

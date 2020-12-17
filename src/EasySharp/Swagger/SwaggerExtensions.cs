@@ -23,13 +23,13 @@ namespace EasySharp.Swagger
 
         public static IServiceCollection AddDocs(this IServiceCollection services)
         {
-            if (EasySharpServicesHelper.IsInitialized == false)
+            if (EasySharpServices.IsInitialized == false)
             {
-                EasySharpServicesHelper.Services = services;
-                EasySharpServicesHelper.Initialize();
+                EasySharpServices.Services = services;
+                EasySharpServices.Initialize();
             }
 
-            Configuration = EasySharpServicesHelper.Builder();
+            Configuration = EasySharpServices.Builder();
 
             var options = new SwaggerOptions();
             Configuration.GetSection(nameof(SwaggerOptions)).Bind(options);
@@ -127,7 +127,7 @@ namespace EasySharp.Swagger
 
         public static IApplicationBuilder UseDocs(this IApplicationBuilder app)
         {
-            Configuration = EasySharpServicesHelper.Builder();
+            Configuration = EasySharpServices.Builder();
 
             var options = new SwaggerOptions();
             Configuration.GetSection(nameof(SwaggerOptions)).Bind(options);

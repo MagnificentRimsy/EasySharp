@@ -1,10 +1,15 @@
 ﻿using EasySharp.Core.AntiXss;
+using EasySharp.Core.Commands;
 using EasySharp.Core.Cors;
 using EasySharp.Core.Helpers;
+using EasySharp.Core.Queries;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Linq;
+using System.Reflection;
 
 namespace EasySharp.Core
 {
@@ -18,14 +23,22 @@ namespace EasySharp.Core
 
         public static IServiceCollection AddEasySharp(this IServiceCollection services, params Type[] types)
         {
-            EasySharpServicesHelper.Services = services;
+            var assemblies = types.Select(type => type.GetTypeInfo().Assembly);
 
-            if (EasySharpServicesHelper.IsInitialized == false)
+            foreach (var assembly in assemblies)
             {
-                EasySharpServicesHelper.Initialize();
+                services.AddMediatR(assembly);
             }
 
-            Configuration = EasySharpServicesHelper.Builder();
+            services.AddScoped<ICommandBus, CommandBus>();
+            services.AddScoped<IQueryBus, QueryBus>();
+
+            EasySharpServices.Services = services;
+            if (EasySharpServices.IsInitialized == false)
+            {
+                EasySharpServices.Initialize();
+            }
+            Configuration = EasySharpServices.Builder();
 
             services.AddOptions();
 

@@ -24,14 +24,14 @@ namespace EasySharp.Core.Messages
         /// </summary>
         /// <typeparam name="TBody"></typeparam>
         /// <param name="tbody"></param>
-        /// <param name="EntityName"></param>
+        /// <param name="entityName"></param>
         /// <returns></returns>
-        public static ApiGenericResponse<TBody> OnEntityCreateError<TBody>(TBody tbody, string EntityName)
+        public static ApiGenericResponse<TBody> OnEntityCreateError<TBody>(TBody tbody, string entityName)
         {
             return new ApiGenericResponse<TBody>()
             {
                 Status = 0,
-                Message = $"An error occured while creating new {EntityName}. Contact your administrator.",
+                Message = $"An error occured while creating new {entityName}. Contact your administrator.",
                 Data = tbody
             };
         }
@@ -41,16 +41,16 @@ namespace EasySharp.Core.Messages
         /// 
         /// </summary>
         /// <typeparam name="TBody"></typeparam>
-        /// <param name="tbody"></param>
-        /// <param name="EntityName"></param>
+        /// <param name="result"></param>
+        /// <param name="entityName"></param>
         /// <returns></returns>
-        public static ApiGenericResponse<TBody> OnEntityCreateSuccess<TBody>(TBody tbody, string EntityName)
+        public static ApiGenericResponse<TBody> OnEntityCreateSuccess<TBody>(TBody result, string entityName)
         {
             return new ApiGenericResponse<TBody>()
             {
                 Status = (int)HttpStatusCode.OK,
-                Message = $"New {EntityName} Created Successfully.",
-                Data = tbody
+                Message = $"New {entityName} Created Successfully.",
+                Data = result
             };
         }
 
@@ -59,14 +59,14 @@ namespace EasySharp.Core.Messages
         /// </summary>
         /// <typeparam name="TBody"></typeparam>
         /// <param name="tbody"></param>
-        /// <param name="EntityName"></param>
+        /// <param name="entityName"></param>
         /// <returns></returns>
-        public static ApiGenericResponse<TBody> OnEntityUpdateSuccess<TBody>(TBody tbody, string EntityName)
+        public static ApiGenericResponse<TBody> OnEntityUpdateSuccess<TBody>(TBody tbody, string entityName)
         {
             return new ApiGenericResponse<TBody>()
             {
                 Status = (int)HttpStatusCode.OK,
-                Message = $"{EntityName} Updated Successfully.",
+                Message = $"{entityName} Updated Successfully.",
                 Data = tbody
             };
         }
@@ -76,14 +76,14 @@ namespace EasySharp.Core.Messages
         /// </summary>
         /// <typeparam name="TBody"></typeparam>
         /// <param name="tbody"></param>
-        /// <param name="EntityName"></param>
+        /// <param name="entityName"></param>
         /// <returns></returns>
-        public static ApiGenericResponse<TBody> OnEntityUpdateError<TBody>(TBody tbody, string EntityName)
+        public static ApiGenericResponse<TBody> OnEntityUpdateError<TBody>(TBody tbody, string entityName)
         {
             return new ApiGenericResponse<TBody>()
             {
                 Status = 0,
-                Message = $"An error occured while delteting {EntityName}. Contact your administrator.",
+                Message = $"An error occured while delteting {entityName}. Contact your administrator.",
                 Data = tbody
             };
         }
@@ -94,14 +94,14 @@ namespace EasySharp.Core.Messages
         /// </summary>
         /// <typeparam name="TBody"></typeparam>
         /// <param name="tbody"></param>
-        /// <param name="EntityName"></param>
+        /// <param name="entityName"></param>
         /// <returns></returns>
-        public static ApiGenericResponse<TBody> OnEntityDeleteSuccess<TBody>(TBody tbody, string EntityName)
+        public static ApiGenericResponse<TBody> OnEntityDeleteSuccess<TBody>(TBody tbody, string entityName)
         {
             return new ApiGenericResponse<TBody>()
             {
                 Status = (int)HttpStatusCode.OK,
-                Message = $"{EntityName} Deleted Successfully.",
+                Message = $"{entityName} Deleted Successfully.",
                 Data = tbody
             };
         }
@@ -111,14 +111,14 @@ namespace EasySharp.Core.Messages
         /// </summary>
         /// <typeparam name="TBody"></typeparam>
         /// <param name="tbody"></param>
-        /// <param name="EntityName"></param>
+        /// <param name="entityName"></param>
         /// <returns></returns>
-        public static ApiGenericResponse<TBody> OnEntityDeleteError<TBody>(TBody tbody, string EntityName) 
+        public static ApiGenericResponse<TBody> OnEntityDeleteError<TBody>(TBody tbody, string entityName) 
         {
             return new ApiGenericResponse<TBody>()
             {
                 Status = 0,
-                Message = $"An error occured while delteting {EntityName}. Contact your administrator.",
+                Message = $"An error occured while delteting {entityName}. Contact your administrator.",
                 Data = tbody
             };
         }
