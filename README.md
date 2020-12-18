@@ -40,6 +40,7 @@ Basic Example
 - [X] [ApiGenericMsg](#ApiGenericMsg)
 - [X] [XXS](#XXS)
 - [X] [CQRS](#CQRS)
+- [X] [GlobalException](#GlobalException)
 - [~~Logging~~](#Logging)
 - [~~EfCore~~](#EfCore)
 - [~~Caching~~](#Caching)
