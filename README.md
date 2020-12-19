@@ -13,7 +13,7 @@ Basic Example
 
 - ConfigureServices
 
-   ```
+   ```c#
    public void ConfigureServices(IServiceCollection services)
    {
        services
@@ -23,7 +23,7 @@ Basic Example
 
 - Configure
 
-   ```
+   ```c#
    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
    {
        if (env.IsDevelopment())
@@ -101,7 +101,7 @@ Input Trimmer helps trim model object before saving to db. Available trimers sup
  - InputTrim : Trim all leading and trailing spaces of a `string`
  - LowerTrim : Convert `strings` to lowercase using the casing rules.
  
- ```
+ ```c#
  [HttpPost]
  [TrimInput]
  [LowerInput]
@@ -137,7 +137,7 @@ And can easly be used in controllers by calling `ApiGenericMsg.OnEntityCreateSuc
 Available CRUD message template are  **OnEntityCreateSuccess** , **OnEntityCreateError**, **OnEntityDeleteSuccess**, **OnEntityDeleteError**, 
 **OnEntityUpdateSuccess**, **OnEntityUpdateError** .. etc
 
-```
+```c#
  [HttpPost("CreateRecord")]
  public ApiGenericResponse<Car> CreateRecord([FromBody] Car dto) 
      => ApiGenericMsg.OnEntityCreateSuccess(dto, EntityName);
@@ -170,7 +170,8 @@ CQRS stands for “Command Query Responsibility Segregation”. As the acronym s
 
 #### Validation
 Validation becomes very helpful when there is a need to create/alter records in the database. Easysharp provides an easy way to validate input models and return validation response. Visit [https://docs.fluentvalidation.net/en/latest/start.html] for more validation rules
-```
+
+```c#
    public class CreateCar : AbstractValidator<CreateCarCommand>
     {
         public CreateCar()
