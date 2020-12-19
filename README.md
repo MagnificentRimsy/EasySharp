@@ -41,7 +41,7 @@ Basic Example
 - [X] [XXS](#XXS)
 - [X] [CQRS](#CQRS)
 - [X] [Validation](#Validation)
-- [~~Logging~~](#Logging)
+- [X] [EasyLog](#EasyLog)
 - [~~EfCore~~](#EfCore)
 - [~~Caching~~](#Caching)
 - [~~Consul~~](#Consul)
@@ -183,3 +183,26 @@ Visit [https://docs.fluentvalidation.net/en/latest/start.html] for more validati
     }
 ```
 You can refer to the `demo controller` for more details.
+
+#### EasyLog
+Easy Log is a logging provider which has two levels of logging options which is File Log and Seq Log. See logging configuration below. `UseEasyLog()` must be used in Program.cs
+
+By default File logging is set to `true`. 
+
+```
+   "LoggerOptions": {
+    "applicationName": "demo-service",
+    "excludePaths": [ "/ping", "/metrics" ],
+    "level": "information",
+    "file": {
+      "enabled": true,
+      "path": "Logs/logs.txt",
+      "interval": "day"
+    },
+    "seq": {
+      "enabled": true,
+      "url": "http://localhost:5341",
+      "token": "secret"
+    }
+  }
+```
