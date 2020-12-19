@@ -185,7 +185,7 @@ Visit [https://docs.fluentvalidation.net/en/latest/start.html] for more validati
 You can refer to the `demo controller` for more details.
 
 #### EasyLog
-Easy Log is a logging provider which has two levels of logging options which is File Log and Seq Log. See logging configuration below. `UseEasyLog()` must be used in Program.cs
+Easy Log is a logging provider with File Log and Seq Log options. See logging configuration below. `UseEasyLog()` must be used in Program.cs
 
 By default File logging is set to `true`. 
 
