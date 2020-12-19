@@ -1,12 +1,16 @@
 ﻿using EasySharp.Core.AntiXss;
+using EasySharp.Core.Behavior;
 using EasySharp.Core.Commands;
 using EasySharp.Core.Cors;
+using EasySharp.Core.Exceptions;
 using EasySharp.Core.Helpers;
 using EasySharp.Core.Queries;
+using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 using System;
 using System.Linq;
 using System.Reflection;
@@ -32,6 +36,7 @@ namespace EasySharp.Core
 
             services.AddScoped<ICommandBus, CommandBus>();
             services.AddScoped<IQueryBus, QueryBus>();
+            services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
             EasySharpServices.Services = services;
             if (EasySharpServices.IsInitialized == false)
@@ -43,7 +48,12 @@ namespace EasySharp.Core
             services.AddOptions();
 
             services
-                .AddMvc();
+                .AddMvc(opt => {
+                    opt.Filters.Add<ExceptionFilter>();
+                    opt.EnableEndpointRouting = false;
+                })
+                .AddNewtonsoftJson(jopt => jopt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore)
+                .AddFluentValidation(cfg => { cfg.RegisterValidatorsFromAssemblies(assemblies); }); 
 
 
             return services;

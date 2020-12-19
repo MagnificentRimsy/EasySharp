@@ -92,10 +92,10 @@ namespace Easy.Demo.Controllers
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         [HttpPost("CreateCarRecord")]
-        public async Task<ApiGenericResponse<IEnumerable<CarDto>>> CreateCarRecord([FromBody] IEnumerable<CarDto> dto, CancellationToken cancellationToken)
+        public async Task<ApiGenericResponse<CarDto>> CreateCarRecord([FromBody] CarDto dto, CancellationToken cancellationToken)
         {
             //dto -> to -> command type
-            var command = Mapping.onMap<IEnumerable<CarDto>, CreateCarCommand>(dto);
+            var command = Mapping.onMap<CarDto, CreateCarCommand>(dto);
 
             var result = await _commandBus.Send(command, cancellationToken);
 

@@ -61,7 +61,7 @@
             <param name="dto"></param>
             <returns></returns>
         </member>
-        <member name="M:Easy.Demo.Controllers.DemoController.CreateCarRecord(System.Collections.Generic.IEnumerable{Easy.Demo.Models.CarDto},System.Threading.CancellationToken)">
+        <member name="M:Easy.Demo.Controllers.DemoController.CreateCarRecord(Easy.Demo.Models.CarDto,System.Threading.CancellationToken)">
             <summary>
             
             </summary>
@@ -136,6 +136,16 @@
             </summary>
             <param name="app"></param>
             <param name="env"></param>
+        </member>
+        <member name="T:Easy.Demo.Validation.Car.CreateCar">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Easy.Demo.Validation.Car.CreateCar.#ctor">
+            <summary>
+            
+            </summary>
         </member>
     </members>
 </doc>
