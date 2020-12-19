@@ -169,8 +169,8 @@ By default XXS protection is set to `false`. You can enable it by adding the opt
 CQRS stands for “Command Query Responsibility Segregation”. As the acronym suggests, it’s all about splitting the responsibility of commands (saves) and queries (reads) into different models. Visit [https://martinfowler.com/bliki/CQRS.html] [CQRS Info] for more infomation
 
 #### Validation
-Validation becomes very helpful when there is a need to create / alter record in the database. Easysharp provides easy way to validate input models by extending fulent validator helper. see below the sample code.
-
+Validation becomes very helpful when there is a need to create / alter record in the database. Easysharp provides an easy way to validate input models with validation response.
+Visit [https://docs.fluentvalidation.net/en/latest/start.html] for more validation rules
 ```
    public class CreateCar : AbstractValidator<CreateCarCommand>
     {
