@@ -85,6 +85,24 @@
             
             </summary>
         </member>
+        <member name="T:Easy.Demo.Program">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Easy.Demo.Program.Main(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:Easy.Demo.Program.CreateHostBuilder(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
         <member name="T:Easy.Demo.Queries.Handler.GetAllCarsHandler">
             <summary>
             
@@ -130,12 +148,13 @@
             </summary>
             <param name="services"></param>
         </member>
-        <member name="M:Easy.Demo.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+        <member name="M:Easy.Demo.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment,Microsoft.Extensions.Logging.ILoggerFactory)">
             <summary>
             This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
             </summary>
             <param name="app"></param>
             <param name="env"></param>
+            <param name="loggerFactory"></param>
         </member>
         <member name="T:Easy.Demo.Validation.Car.CreateCar">
             <summary>
