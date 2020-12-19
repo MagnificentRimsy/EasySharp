@@ -40,7 +40,7 @@ Basic Example
 - [X] [ApiGenericMsg](#ApiGenericMsg)
 - [X] [XXS](#XXS)
 - [X] [CQRS](#CQRS)
-- [X] [GlobalException](#GlobalException)
+- [X] [Validation](#Validation)
 - [~~Logging~~](#Logging)
 - [~~EfCore~~](#EfCore)
 - [~~Caching~~](#Caching)
@@ -167,3 +167,19 @@ By default XXS protection is set to `false`. You can enable it by adding the opt
 
 #### CQRS
 CQRS stands for “Command Query Responsibility Segregation”. As the acronym suggests, it’s all about splitting the responsibility of commands (saves) and queries (reads) into different models. Visit [https://martinfowler.com/bliki/CQRS.html] [CQRS Info] for more infomation
+
+#### Validation
+Validation becomes very helpful when there is a need to create / alter record in the database. Easysharp provides easy way to validate input models by extending fulent validator helper. see below the sample code.
+
+```
+   public class CreateCar : AbstractValidator<CreateCarCommand>
+    {
+        public CreateCar()
+        {
+            RuleFor(cmd => cmd.Brand).NotEmpty().WithMessage("Please specify Brand");
+            RuleFor(cmd => cmd.Model).NotEmpty().WithMessage("Please specify Model");
+            RuleFor(cmd => cmd.Year).NotEmpty().WithMessage("Please specify Year");
+        }
+    }
+```
+You can refer to the `demo controller` for more details.
