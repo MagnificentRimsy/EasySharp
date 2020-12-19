@@ -1,5 +1,5 @@
 # EasySharp
-This library aims to provide an easy way in configuring and developing .netcore application.
+This library aims to provide an easy way in configuring and developing .netcore web api application.
 
    [I've written a short Medium post about this repository](https://medium.com)
    
@@ -40,12 +40,13 @@ Basic Example
 - [X] [ApiGenericMsg](#ApiGenericMsg)
 - [X] [XXS](#XXS)
 - [X] [CQRS](#CQRS)
-- [~~Pagination~~](#Pagination)
-- [~~Payment~~](#Payment)
-- [~~Caching~~](#Caching)
-- [~~Consul~~](#Consul)
+- [X] [GlobalException](#GlobalException)
 - [~~Logging~~](#Logging)
 - [~~EfCore~~](#EfCore)
+- [~~Caching~~](#Caching)
+- [~~Consul~~](#Consul)
+- [~~Pagination~~](#Pagination)
+- [~~Payment~~](#Payment)
 - [~~HealthCheck~~](#HealthCheck)
       
 #### EasyDoc
@@ -165,3 +166,4 @@ By default XXS protection is set to `false`. You can enable it by adding the opt
 ```
 
 #### CQRS
+CQRS stands for “Command Query Responsibility Segregation”. As the acronym suggests, it’s all about splitting the responsibility of commands (saves) and queries (reads) into different models. Visit [https://martinfowler.com/bliki/CQRS.html] [CQRS Info] for more infomation
