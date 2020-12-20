@@ -13,7 +13,7 @@ Basic Example
 
 - ConfigureServices
 
-   ```
+   ```c#
    public void ConfigureServices(IServiceCollection services)
    {
        services
@@ -23,7 +23,7 @@ Basic Example
 
 - Configure
 
-   ```
+   ```c#
    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
    {
        if (env.IsDevelopment())
@@ -41,7 +41,7 @@ Basic Example
 - [X] [XXS](#XXS)
 - [X] [CQRS](#CQRS)
 - [X] [Validation](#Validation)
-- [~~Logging~~](#Logging)
+- [X] [EasyLog](#EasyLog)
 - [~~EfCore~~](#EfCore)
 - [~~Caching~~](#Caching)
 - [~~Consul~~](#Consul)
@@ -101,7 +101,7 @@ Input Trimmer helps trim model object before saving to db. Available trimers sup
  - InputTrim : Trim all leading and trailing spaces of a `string`
  - LowerTrim : Convert `strings` to lowercase using the casing rules.
  
- ```
+ ```c#
  [HttpPost]
  [TrimInput]
  [LowerInput]
@@ -137,7 +137,7 @@ And can easly be used in controllers by calling `ApiGenericMsg.OnEntityCreateSuc
 Available CRUD message template are  **OnEntityCreateSuccess** , **OnEntityCreateError**, **OnEntityDeleteSuccess**, **OnEntityDeleteError**, 
 **OnEntityUpdateSuccess**, **OnEntityUpdateError** .. etc
 
-```
+```c#
  [HttpPost("CreateRecord")]
  public ApiGenericResponse<Car> CreateRecord([FromBody] Car dto) 
      => ApiGenericMsg.OnEntityCreateSuccess(dto, EntityName);
@@ -169,9 +169,9 @@ By default XXS protection is set to `false`. You can enable it by adding the opt
 CQRS stands for “Command Query Responsibility Segregation”. As the acronym suggests, it’s all about splitting the responsibility of commands (saves) and queries (reads) into different models. Visit [https://martinfowler.com/bliki/CQRS.html] [CQRS Info] for more infomation
 
 #### Validation
-Validation becomes very helpful when there is a need to create / alter record in the database. Easysharp provides an easy way to validate input models with validation response.
-Visit [https://docs.fluentvalidation.net/en/latest/start.html] for more validation rules
-```
+Validation becomes very helpful when there is a need to create/alter records in the database. Easysharp provides an easy way to validate input models and return validation response. Visit [https://docs.fluentvalidation.net/en/latest/start.html] for more validation rules
+
+```c#
    public class CreateCar : AbstractValidator<CreateCarCommand>
     {
         public CreateCar()
@@ -183,3 +183,26 @@ Visit [https://docs.fluentvalidation.net/en/latest/start.html] for more validati
     }
 ```
 You can refer to the `demo controller` for more details.
+
+#### EasyLog
+Easy Log is a logging provider with File Log and Seq Log options. See logging configuration below. `UseEasyLog()` must be used in Program.cs
+
+By default File logging is set to `true`. 
+
+```
+   "LoggerOptions": {
+    "applicationName": "demo-service",
+    "excludePaths": [ "/ping", "/metrics" ],
+    "level": "information",
+    "file": {
+      "enabled": true,
+      "path": "Logs/logs.txt",
+      "interval": "day"
+    },
+    "seq": {
+      "enabled": true,
+      "url": "http://localhost:5341",
+      "token": "secret"
+    }
+  }
+```
