@@ -42,7 +42,7 @@ Basic Example
 - [X] [CQRS](#CQRS)
 - [X] [Validation](#Validation)
 - [X] [EasyLog](#EasyLog)
-- [EfCore](#EfCore)
+- [X] [EfCore](#EfCore)
 - [~~Caching~~](#Caching)
 - [~~Consul~~](#Consul)
 - [~~Pagination~~](#Pagination)
@@ -55,7 +55,7 @@ Easy Doc is used for API documentation.
 `.AddDocs()` and `.UseDocs()` is used to include swagger in the application.
  Security option can be enable or disabled by passing `true` or `false` to IncludeSecurity property.
  
- ```
+ ```yaml
 "SwaggerOptions": {
     "enabled": true,
     "reDocEnabled": false,
@@ -114,7 +114,7 @@ Input Trimmer helps trim model object before saving to db. Available trimers sup
  
  Appsettings for Cors looks like this
  
- ```
+ ```yaml
  "CorsOptions": {
     "Enabled": true,
     "Name": "CorsPolicy",
@@ -144,7 +144,7 @@ Available CRUD message template are  **OnEntityCreateSuccess** , **OnEntityCreat
 ```
 Response type from ApiGenericMessage becomes
 
-```
+```yaml
 {
   "status": 0,
   "data": {
@@ -159,7 +159,7 @@ Response type from ApiGenericMessage becomes
 #### XXS
 By default XXS protection is set to `false`. You can enable it by adding the option below in your `app.settings.json` file.
 
-```
+```yaml
  "AntiXssOptions": {
     "Enabled": true
   }
