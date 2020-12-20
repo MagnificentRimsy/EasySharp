@@ -1,5 +1,9 @@
+using Easy.Demo.Data;
+using Easy.Demo.Interface;
+using Easy.Demo.Repos;
 using EasySharp.Core;
 using EasySharp.Core.Cors;
+using EasySharp.EfCore;
 using EasySharp.Logging;
 using EasySharp.Swagger;
 using Microsoft.AspNetCore.Builder;
@@ -44,8 +48,11 @@ namespace Easy.Demo
         {
             services
                 .AddEasySharp(typeof(Startup))
+                .AddEfCore<DataContext>()
                 .AddDocs()
                 .AddCorsOption();
+
+            services.AddScoped<IEmployee, EmployeeRepo>();
         }
 
         /// <summary>

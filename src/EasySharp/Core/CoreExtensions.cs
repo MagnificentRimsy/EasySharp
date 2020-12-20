@@ -39,10 +39,10 @@ namespace EasySharp.Core
             services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
             EasySharpServices.Services = services;
+
             if (EasySharpServices.IsInitialized == false)
-            {
                 EasySharpServices.Initialize();
-            }
+            
             Configuration = EasySharpServices.Builder();
 
             services.AddOptions();

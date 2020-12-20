@@ -13,7 +13,7 @@ namespace Easy.Demo.Commands.Handler
     /// <summary>
     /// 
     /// </summary>
-    public class CreateCarHandler : ICommandHandler<CreateCarCommand, CarDto>
+    public class CreateCarHandler : ICommandHandler<CreateCarCommand, EmployeeDto>
     {
         /// <summary>
         /// 
@@ -29,11 +29,11 @@ namespace Easy.Demo.Commands.Handler
         /// <param name="request"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public async Task<CarDto> Handle(CreateCarCommand request, CancellationToken cancellationToken)
+        public async Task<EmployeeDto> Handle(CreateCarCommand request, CancellationToken cancellationToken)
         {
             //make db call rather
-            var result = CarFactory.Create();
-
+            var result = EmployeeFactory.Create();
+                    
             return result.FirstOrDefault();
         }
     }

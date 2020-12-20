@@ -1,5 +1,7 @@
 ﻿using Easy.Demo.Factories.Cars;
+using Easy.Demo.Interface;
 using Easy.Demo.Models;
+using Easy.Demo.ProcModels;
 using Easy.Demo.Queries.Query;
 using EasySharp.Core.Queries;
 using System;
@@ -13,14 +15,16 @@ namespace Easy.Demo.Queries.Handler
     /// <summary>
     /// 
     /// </summary>
-    public class GetAllCarsHandler : IQueryHandler<GetAllCarsQuery, IEnumerable<CarDto>>
+    public class GetAllEmployeesHandler : IQueryHandler<GetAllEmployeesQuery, IEnumerable<Employee>>
     {
+        private readonly IEmployee _employee;
+
         /// <summary>
         /// 
         /// </summary>
-        public GetAllCarsHandler()
+        public GetAllEmployeesHandler(IEmployee employee)
         {
-
+            _employee = employee;
         }
 
         /// <summary>
@@ -29,9 +33,9 @@ namespace Easy.Demo.Queries.Handler
         /// <param name="request"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public async Task<IEnumerable<CarDto>> Handle(GetAllCarsQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<Employee>> Handle(GetAllEmployeesQuery request, CancellationToken cancellationToken)
         {
-            var result = CarFactory.Create();
+            var result =  await _employee.GetEmployees();
 
             return result;
         }

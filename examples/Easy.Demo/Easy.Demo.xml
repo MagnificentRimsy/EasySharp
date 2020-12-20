@@ -27,7 +27,17 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="M:Easy.Demo.Controllers.DemoController.#ctor(EasySharp.Core.Queries.IQueryBus,EasySharp.Core.Commands.ICommandBus)">
+        <member name="T:Easy.Demo.Controllers.DemoController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Easy.Demo.Controllers.DemoController.EntityName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Easy.Demo.Controllers.DemoController.#ctor(EasySharp.Core.Queries.IQueryBus,EasySharp.Core.Commands.ICommandBus,Easy.Demo.Interface.IEmployee)">
             <summary>
             
             </summary>
@@ -40,28 +50,28 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Easy.Demo.Controllers.DemoController.CreateRecordTrimBefore(Easy.Demo.Models.CarDto)">
+        <member name="M:Easy.Demo.Controllers.DemoController.CreateRecordTrimBefore(Easy.Demo.Models.EmployeeDto)">
             <summary>
             Trim Method
             </summary>
             <param name="dto"></param>
             <returns></returns>
         </member>
-        <member name="M:Easy.Demo.Controllers.DemoController.CreateRecord(Easy.Demo.Models.CarDto)">
+        <member name="M:Easy.Demo.Controllers.DemoController.CreateRecord(Easy.Demo.Models.EmployeeDto)">
             <summary>
             Api Generic Msg - Object
             </summary>
             <param name="dto"></param>
             <returns></returns>
         </member>
-        <member name="M:Easy.Demo.Controllers.DemoController.CreateRecordCollection(System.Collections.Generic.IEnumerable{Easy.Demo.Models.CarDto})">
+        <member name="M:Easy.Demo.Controllers.DemoController.CreateRecordCollection(System.Collections.Generic.IEnumerable{Easy.Demo.Models.EmployeeDto})">
             <summary>
              Api Generic Msg - Array Of Object
             </summary>
             <param name="dto"></param>
             <returns></returns>
         </member>
-        <member name="M:Easy.Demo.Controllers.DemoController.CreateCarRecord(Easy.Demo.Models.CarDto,System.Threading.CancellationToken)">
+        <member name="M:Easy.Demo.Controllers.DemoController.CreateCarRecord(Easy.Demo.Models.EmployeeDto,System.Threading.CancellationToken)">
             <summary>
             
             </summary>
@@ -69,18 +79,137 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="T:Easy.Demo.Factories.Cars.CarFactory">
+        <member name="T:Easy.Demo.Data.Configurations.EmployeeConfiguration">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Easy.Demo.Data.Configurations.EmployeeConfiguration.Build(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:Easy.Demo.Data.DataContext">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Easy.Demo.Data.DataContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{Easy.Demo.Data.DataContext})">
+            <summary>
+            
+            </summary>
+            <param name="options"></param>
+        </member>
+        <member name="P:Easy.Demo.Data.DataContext.Employees">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Easy.Demo.Data.DataContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:Easy.Demo.Factories.Cars.EmployeeFactory">
             <summary>
             create fake cars
             </summary>
         </member>
-        <member name="M:Easy.Demo.Factories.Cars.CarFactory.Create">
+        <member name="M:Easy.Demo.Factories.Cars.EmployeeFactory.Create">
             <summary>
             Fake record
             </summary>
             <returns></returns>
         </member>
-        <member name="T:Easy.Demo.Models.CarDto">
+        <member name="T:Easy.Demo.Interface.IEmployee">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Easy.Demo.Interface.IEmployee.GetEmployees">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Easy.Demo.Models.EmployeeDto">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Easy.Demo.Models.EmployeeDto.Id">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Easy.Demo.Models.EmployeeDto.FirstName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Easy.Demo.Models.EmployeeDto.LastName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Easy.Demo.Models.EmployeeDto.Email">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Easy.Demo.Models.EmployeeDto.Phone">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Easy.Demo.Models.EmployeeDto.CreatedAtUtc">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Easy.Demo.Models.EmployeeDto.LastModifiedAtUtc">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Easy.Demo.ProcModels.Employee">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Easy.Demo.ProcModels.Employee.Id">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Easy.Demo.ProcModels.Employee.FirstName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Easy.Demo.ProcModels.Employee.LastName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Easy.Demo.ProcModels.Employee.Email">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Easy.Demo.ProcModels.Employee.Phone">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Easy.Demo.ProcModels.Employee.CreatedAtUtc">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Easy.Demo.ProcModels.Employee.LastModifiedAtUtc">
             <summary>
             
             </summary>
@@ -125,6 +254,17 @@
             <summary>
             
             </summary>
+        </member>
+        <member name="T:Easy.Demo.Repos.EmployeeRepo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Easy.Demo.Repos.EmployeeRepo.#ctor(Easy.Demo.Data.DataContext)">
+            <summary>
+            
+            </summary>
+            <param name="db"></param>
         </member>
         <member name="T:Easy.Demo.Startup">
             <summary>

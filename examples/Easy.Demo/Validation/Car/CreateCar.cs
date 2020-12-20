@@ -13,9 +13,10 @@ namespace Easy.Demo.Validation.Car
         /// </summary>
         public CreateCar()
         {
-            RuleFor(cmd => cmd.Brand).NotEmpty().WithMessage("Please specify Brand");
-            RuleFor(cmd => cmd.Model).NotEmpty().WithMessage("Please specify Model");
-            RuleFor(cmd => cmd.Year).NotEmpty().WithMessage("Please specify Year");
+            RuleFor(cmd => cmd.FirstName).NotEmpty().WithMessage("Please specify Brand");
+            RuleFor(cmd => cmd.LastName).NotEmpty().WithMessage("Please specify Brand");
+            RuleFor(cmd => cmd.Email).NotEmpty().WithMessage("Please specify Brand");
+            RuleFor(cmd => cmd.Phone).NotEmpty().WithMessage("Please specify Model");
         }
 
     }

@@ -15,8 +15,8 @@
     }
   },
 
-  "ConnectionStrings": {
-    "AppConnection": "Server=192.168.0.71\\SQL2012;Database=EasyDb;User ID=sa;Password=SymBoL$1948;Trusted_Connection=False;MultipleActiveResultSets=true;"
+  "EfCoreOptions": {
+    "ConnectionString": "Server=DESKTOP-6BR1LOC;Initial Catalog=EasySharp;user id=sa;password=&kumfipolice12"
   },
 
   "CorsOptions": {

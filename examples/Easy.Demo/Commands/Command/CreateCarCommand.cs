@@ -8,11 +8,13 @@ namespace Easy.Demo.Commands.Command
     /// <summary>
     /// 
     /// </summary>
-    public class CreateCarCommand : ICommand<CarDto>
+    public class CreateCarCommand : ICommand<EmployeeDto>
     {
-        public string Brand { get; set; }
-        public string Model { get; set; }
-        public int Year { get; set; }
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public string FirstName { get; set; }
+        public int LastName { get; set; } 
+        public int Email { get; set; }
+        public int Phone { get; set; }
+        public int CreatedAtUtc { get; set; }
+        public int LastModifiedAtUtc { get; set; }
     }
 }

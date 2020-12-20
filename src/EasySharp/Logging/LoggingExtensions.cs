@@ -16,7 +16,7 @@ namespace EasySharp.Logging
 {
     public static class LoggingExtensions
     {
-        public static IHostBuilder UseLogging(this IHostBuilder hostBuilder,
+        public static IHostBuilder UseEasyLog(this IHostBuilder hostBuilder,
             Action<LoggerConfiguration> configure = null)
             => hostBuilder.UseSerilog((context, loggerConfig) =>
             {

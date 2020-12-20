@@ -1,29 +1,36 @@
 ﻿using Easy.Demo.Commands.Command;
+using Easy.Demo.Data;
+using Easy.Demo.Interface;
 using Easy.Demo.Models;
+using Easy.Demo.ProcModels;
 using Easy.Demo.Queries.Query;
 using EasySharp.Core.Attributes;
 using EasySharp.Core.Commands;
-using EasySharp.Core.Helpers;
 using EasySharp.Core.Messages;
 using EasySharp.Core.Messages.Response;
 using EasySharp.Core.Queries;
+using EasySharp.EfCore.StoredProcedure;
+using EasySharp.EfCore.StoredProcedure.Interface;
 using EasySharp.Helpers;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Easy.Demo.Controllers
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [ApiController]
     [Route("[controller]")]
     public class DemoController : ControllerBase
     {
-        public static string EntityName => "Car";
+        /// <summary>
+        /// 
+        /// </summary>
+        public static string EntityName => "Employee";
 
         private readonly IQueryBus _queryBus;
         private readonly ICommandBus _commandBus;
@@ -46,7 +53,7 @@ namespace Easy.Demo.Controllers
         [HttpGet("GetCars")]
         public async Task<IActionResult> GetCars(CancellationToken cancellationToken)
         {
-            var query = new GetAllCarsQuery{};
+            var query = new GetAllEmployeesQuery { };
 
             var result = await _queryBus.Send(query, cancellationToken);
 
@@ -62,9 +69,9 @@ namespace Easy.Demo.Controllers
         [HttpPost("CreateRecordTrimBefore")]
         [TrimInput]
         [LowerInput]
-        public IActionResult CreateRecordTrimBefore([FromBody] CarDto dto) 
+        public IActionResult CreateRecordTrimBefore([FromBody] EmployeeDto dto)
             => Ok(dto);
-        
+
 
         /// <summary>
         /// Api Generic Msg - Object
@@ -72,9 +79,9 @@ namespace Easy.Demo.Controllers
         /// <param name="dto"></param>
         /// <returns></returns>
         [HttpPost("CreateRecord")]
-        public ApiGenericResponse<CarDto> CreateRecord([FromBody] CarDto dto) 
+        public ApiGenericResponse<EmployeeDto> CreateRecord([FromBody] EmployeeDto dto)
             => ApiGenericMsg.OnEntityCreateSuccess(dto, EntityName);
-        
+
 
         /// <summary>
         ///  Api Generic Msg - Array Of Object
@@ -82,7 +89,7 @@ namespace Easy.Demo.Controllers
         /// <param name="dto"></param>
         /// <returns></returns>
         [HttpPost("CreateRecordCollection")]
-        public ApiGenericResponse<IEnumerable<CarDto>> CreateRecordCollection([FromBody] IEnumerable<CarDto> dto) => 
+        public ApiGenericResponse<IEnumerable<EmployeeDto>> CreateRecordCollection([FromBody] IEnumerable<EmployeeDto> dto) =>
             ApiGenericMsg.OnEntityCreateSuccess(dto, EntityName);
 
         /// <summary>
@@ -92,10 +99,10 @@ namespace Easy.Demo.Controllers
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         [HttpPost("CreateCarRecord")]
-        public async Task<ApiGenericResponse<CarDto>> CreateCarRecord([FromBody] CarDto dto, CancellationToken cancellationToken)
+        public async Task<ApiGenericResponse<EmployeeDto>> CreateCarRecord([FromBody] EmployeeDto dto, CancellationToken cancellationToken)
         {
             //dto -> to -> command type
-            var command = Mapping.onMap<CarDto, CreateCarCommand>(dto);
+            var command = Mapping.onMap<EmployeeDto, CreateCarCommand>(dto);
 
             var result = await _commandBus.Send(command, cancellationToken);
 

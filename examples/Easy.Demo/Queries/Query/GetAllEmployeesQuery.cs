@@ -1,4 +1,5 @@
 ﻿using Easy.Demo.Models;
+using Easy.Demo.ProcModels;
 using EasySharp.Core.Queries;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace Easy.Demo.Queries.Query
     /// <summary>
     /// 
     /// </summary>
-    public class GetAllCarsQuery : IQuery<IEnumerable<CarDto>>
+    public class GetAllEmployeesQuery : IQuery<IEnumerable<Employee>>
     {
     }
-}
+} 
