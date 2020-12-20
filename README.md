@@ -189,7 +189,7 @@ Easy Log is a logging provider with File Log and Seq Log options. See logging co
 
 By default File logging is set to `true`. 
 
-```json
+```yaml
    "LoggerOptions": {
     "applicationName": "demo-service",
     "excludePaths": [ "/ping", "/metrics" ],
@@ -210,7 +210,7 @@ By default File logging is set to `true`.
 #### EfCore
 The only supported Database Driver is Efcore. To enable the driver add AddEfCore<YourOwnContext>() in the startup.cs class, and options below to your ap.settings.json.
 
-```
+```yaml
 "EfCoreOptions": {
     "ConnectionString": "Server=DESKTOP-6BR1LOC;Initial Catalog=Db;user id=sa;password=Password"
     },
