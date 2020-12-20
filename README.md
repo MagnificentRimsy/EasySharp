@@ -42,7 +42,7 @@ Basic Example
 - [X] [CQRS](#CQRS)
 - [X] [Validation](#Validation)
 - [X] [EasyLog](#EasyLog)
-- [~~EfCore~~](#EfCore)
+- [EfCore](#EfCore)
 - [~~Caching~~](#Caching)
 - [~~Consul~~](#Consul)
 - [~~Pagination~~](#Pagination)
@@ -205,4 +205,13 @@ By default File logging is set to `true`.
       "token": "secret"
     }
   }
+```
+
+#### EfCore
+The only support Database Driver is Efcore. To enable the driver add AddEfCore<YourOwnContext>() in the startup.cs class, and options to your ap.settings.json.
+
+```
+    "EfCoreOptions": {
+        "ConnectionString": "Server=DESKTOP-6BR1LOC;Initial Catalog=Db;user id=sa;password=Password"
+     },
 ```
