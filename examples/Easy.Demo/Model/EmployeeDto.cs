@@ -31,15 +31,5 @@ namespace Easy.Demo.Models
         /// 
         /// </summary>
         public string Phone { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public DateTime CreatedAtUtc { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public DateTime? LastModifiedAtUtc { get; set; }
     }
 }

@@ -1,18 +1,13 @@
-﻿using Easy.Demo.Data.Configurations;
-using Easy.Demo.Models;
-using Easy.Demo.ProcModels;
+﻿using Easy.Demo.Data.Entity;
+using Easy.Demo.Data.EntityConfigurations;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Easy.Demo.Data
 {
     /// <summary>
     /// 
     /// </summary>
-   public class DataContext : DbContext
+    public class DataContext : DbContext
     {
         /// <summary>
         /// 

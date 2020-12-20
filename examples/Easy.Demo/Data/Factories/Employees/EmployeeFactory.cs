@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Easy.Demo.Factories.Cars
+namespace Easy.Demo.Factories.Employees
 {
     /// <summary>
     /// create fake cars

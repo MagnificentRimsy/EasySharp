@@ -4,22 +4,22 @@
         <name>Easy.Demo</name>
     </assembly>
     <members>
-        <member name="T:Easy.Demo.Commands.Command.CreateCarCommand">
+        <member name="T:Easy.Demo.Commands.Command.CreateEmployeeCommand">
             <summary>
             
             </summary>
         </member>
-        <member name="T:Easy.Demo.Commands.Handler.CreateCarHandler">
+        <member name="T:Easy.Demo.Commands.Handler.CreateEmployeeHandler">
             <summary>
             
             </summary>
         </member>
-        <member name="M:Easy.Demo.Commands.Handler.CreateCarHandler.#ctor">
+        <member name="M:Easy.Demo.Commands.Handler.CreateEmployeeHandler.#ctor">
             <summary>
             
             </summary>
         </member>
-        <member name="M:Easy.Demo.Commands.Handler.CreateCarHandler.Handle(Easy.Demo.Commands.Command.CreateCarCommand,System.Threading.CancellationToken)">
+        <member name="M:Easy.Demo.Commands.Handler.CreateEmployeeHandler.Handle(Easy.Demo.Commands.Command.CreateEmployeeCommand,System.Threading.CancellationToken)">
             <summary>
             
             </summary>
@@ -37,7 +37,7 @@
             
             </summary>
         </member>
-        <member name="M:Easy.Demo.Controllers.DemoController.#ctor(EasySharp.Core.Queries.IQueryBus,EasySharp.Core.Commands.ICommandBus,Easy.Demo.Interface.IEmployee)">
+        <member name="M:Easy.Demo.Controllers.DemoController.#ctor(EasySharp.Core.Queries.IQueryBus,EasySharp.Core.Commands.ICommandBus)">
             <summary>
             
             </summary>
@@ -79,17 +79,6 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="T:Easy.Demo.Data.Configurations.EmployeeConfiguration">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:Easy.Demo.Data.Configurations.EmployeeConfiguration.Build(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <summary>
-            
-            </summary>
-            <param name="builder"></param>
-        </member>
         <member name="T:Easy.Demo.Data.DataContext">
             <summary>
             
@@ -112,12 +101,53 @@
             </summary>
             <param name="builder"></param>
         </member>
-        <member name="T:Easy.Demo.Factories.Cars.EmployeeFactory">
+        <member name="T:Easy.Demo.Data.EntityConfigurations.EmployeeBankInfoConfiguration">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Easy.Demo.Data.EntityConfigurations.EmployeeConfiguration">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Easy.Demo.Data.EntityConfigurations.EmployeeConfiguration.Build(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:Easy.Demo.Data.Entity.Employee">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Easy.Demo.Data.Entity.Employee.FirstName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Easy.Demo.Data.Entity.Employee.LastName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Easy.Demo.Data.Entity.Employee.Email">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Easy.Demo.Data.Entity.Employee.Phone">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Easy.Demo.Factories.Employees.EmployeeFactory">
             <summary>
             create fake cars
             </summary>
         </member>
-        <member name="M:Easy.Demo.Factories.Cars.EmployeeFactory.Create">
+        <member name="M:Easy.Demo.Factories.Employees.EmployeeFactory.Create">
             <summary>
             Fake record
             </summary>
@@ -164,56 +194,6 @@
             
             </summary>
         </member>
-        <member name="P:Easy.Demo.Models.EmployeeDto.CreatedAtUtc">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Easy.Demo.Models.EmployeeDto.LastModifiedAtUtc">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="T:Easy.Demo.ProcModels.Employee">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Easy.Demo.ProcModels.Employee.Id">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Easy.Demo.ProcModels.Employee.FirstName">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Easy.Demo.ProcModels.Employee.LastName">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Easy.Demo.ProcModels.Employee.Email">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Easy.Demo.ProcModels.Employee.Phone">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Easy.Demo.ProcModels.Employee.CreatedAtUtc">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Easy.Demo.ProcModels.Employee.LastModifiedAtUtc">
-            <summary>
-            
-            </summary>
-        </member>
         <member name="T:Easy.Demo.Program">
             <summary>
             
@@ -232,17 +212,17 @@
             <param name="args"></param>
             <returns></returns>
         </member>
-        <member name="T:Easy.Demo.Queries.Handler.GetAllCarsHandler">
+        <member name="T:Easy.Demo.Queries.Handler.GetAllEmployeesHandler">
             <summary>
             
             </summary>
         </member>
-        <member name="M:Easy.Demo.Queries.Handler.GetAllCarsHandler.#ctor">
+        <member name="M:Easy.Demo.Queries.Handler.GetAllEmployeesHandler.#ctor(Easy.Demo.Interface.IEmployee)">
             <summary>
             
             </summary>
         </member>
-        <member name="M:Easy.Demo.Queries.Handler.GetAllCarsHandler.Handle(Easy.Demo.Queries.Query.GetAllCarsQuery,System.Threading.CancellationToken)">
+        <member name="M:Easy.Demo.Queries.Handler.GetAllEmployeesHandler.Handle(Easy.Demo.Queries.Query.GetAllEmployeesQuery,System.Threading.CancellationToken)">
             <summary>
             
             </summary>
@@ -250,7 +230,7 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="T:Easy.Demo.Queries.Query.GetAllCarsQuery">
+        <member name="T:Easy.Demo.Queries.Query.GetAllEmployeesQuery">
             <summary>
             
             </summary>
@@ -265,6 +245,12 @@
             
             </summary>
             <param name="db"></param>
+        </member>
+        <member name="M:Easy.Demo.Repos.EmployeeRepo.GetEmployees">
+            <summary>
+            
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:Easy.Demo.Startup">
             <summary>
@@ -296,12 +282,12 @@
             <param name="env"></param>
             <param name="loggerFactory"></param>
         </member>
-        <member name="T:Easy.Demo.Validation.Car.CreateCar">
+        <member name="T:Easy.Demo.Validation.Employees.CreateEmployee">
             <summary>
-            
+             
             </summary>
         </member>
-        <member name="M:Easy.Demo.Validation.Car.CreateCar.#ctor">
+        <member name="M:Easy.Demo.Validation.Employees.CreateEmployee.#ctor">
             <summary>
             
             </summary>

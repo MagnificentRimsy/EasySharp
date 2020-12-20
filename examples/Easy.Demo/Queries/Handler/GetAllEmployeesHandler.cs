@@ -1,12 +1,8 @@
-﻿using Easy.Demo.Factories.Cars;
+﻿using Easy.Demo.Data.Entity;
 using Easy.Demo.Interface;
-using Easy.Demo.Models;
-using Easy.Demo.ProcModels;
 using Easy.Demo.Queries.Query;
 using EasySharp.Core.Queries;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 

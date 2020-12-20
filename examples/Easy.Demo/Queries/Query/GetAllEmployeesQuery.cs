@@ -1,10 +1,6 @@
-﻿using Easy.Demo.Models;
-using Easy.Demo.ProcModels;
+﻿using Easy.Demo.Data.Entity;
 using EasySharp.Core.Queries;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Easy.Demo.Queries.Query
 {

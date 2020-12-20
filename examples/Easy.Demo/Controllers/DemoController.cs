@@ -1,19 +1,13 @@
 ﻿using Easy.Demo.Commands.Command;
-using Easy.Demo.Data;
-using Easy.Demo.Interface;
 using Easy.Demo.Models;
-using Easy.Demo.ProcModels;
 using Easy.Demo.Queries.Query;
 using EasySharp.Core.Attributes;
 using EasySharp.Core.Commands;
 using EasySharp.Core.Messages;
 using EasySharp.Core.Messages.Response;
 using EasySharp.Core.Queries;
-using EasySharp.EfCore.StoredProcedure;
-using EasySharp.EfCore.StoredProcedure.Interface;
 using EasySharp.Helpers;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -102,7 +96,7 @@ namespace Easy.Demo.Controllers
         public async Task<ApiGenericResponse<EmployeeDto>> CreateCarRecord([FromBody] EmployeeDto dto, CancellationToken cancellationToken)
         {
             //dto -> to -> command type
-            var command = Mapping.onMap<EmployeeDto, CreateCarCommand>(dto);
+            var command = Mapping.onMap<EmployeeDto, CreateEmployeeCommand>(dto);
 
             var result = await _commandBus.Send(command, cancellationToken);
 

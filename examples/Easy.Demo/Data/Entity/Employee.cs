@@ -4,17 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Easy.Demo.ProcModels
+namespace Easy.Demo.Data.Entity
 {
     /// <summary>
     /// 
     /// </summary>
     public class Employee : IProc<Guid>
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        public Guid Id { get; set; }
 
         /// <summary>
         /// 
@@ -35,15 +31,5 @@ namespace Easy.Demo.ProcModels
         /// 
         /// </summary>
         public string Phone { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public DateTime CreatedAtUtc { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public DateTime? LastModifiedAtUtc { get; set; }
     }
 }

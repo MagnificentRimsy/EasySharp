@@ -1,11 +1,9 @@
-﻿using Easy.Demo.ProcModels;
+﻿using Easy.Demo.Data.Entity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace Easy.Demo.Data.Configurations
+namespace Easy.Demo.Data.EntityConfigurations
 {
     /// <summary>
     /// 
@@ -20,7 +18,7 @@ namespace Easy.Demo.Data.Configurations
         {
             builder.Entity<Employee>(b =>
             {
-                b.Property(p => p.Id)
+                b.Property(p => p.Id).HasDefaultValueSql("newid()")
                     .IsRequired();
 
                 b.Property(p => p.FirstName)
@@ -35,14 +33,14 @@ namespace Easy.Demo.Data.Configurations
                 b.Property(p => p.Phone)
                     .IsRequired();
 
-                b.Property(p => p.CreatedAtUtc)
-                    .IsRequired().HasDefaultValue(DateTime.UtcNow);
-
-                b.Property(p => p.LastModifiedAtUtc)
-                    .IsRequired().HasDefaultValue(DateTime.UtcNow);
+                b.Property(p => p.CreatedAtUtc).HasDefaultValueSql("getutcdate()");
+                b.Property(p => p.CreatedAtUtc).Metadata.SetBeforeSaveBehavior(PropertySaveBehavior.Throw);
+                b.Property(p => p.CreatedAtUtc).Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Throw);
+                b.Property(p => p.LastModifiedAtUtc).Metadata.SetBeforeSaveBehavior(PropertySaveBehavior.Throw);
 
                 b.HasKey(k => k.Id);
             });
+
         }
     }
 }

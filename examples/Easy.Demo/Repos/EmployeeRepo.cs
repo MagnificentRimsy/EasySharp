@@ -1,9 +1,7 @@
 ﻿using Easy.Demo.Data;
+using Easy.Demo.Data.Entity;
 using Easy.Demo.Interface;
-using Easy.Demo.ProcModels;
 using EasySharp.EfCore.StoredProcedure;
-using EasySharp.EfCore.StoredProcedure.Interface;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
