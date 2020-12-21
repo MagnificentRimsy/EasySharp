@@ -5,11 +5,15 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>C:\Users\MAmeyaw\source\personal development\EasySharp\examples\Easy.Demo\Easy.Demo.xml</DocumentationFile>
+    <DocumentationFile>C:\Users\cyber\source\library development\EasySharp\examples\Easy.Demo\Easy.Demo.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\EasySharp\EasySharp.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\storage\disk\" />
   </ItemGroup>
 
 </Project>

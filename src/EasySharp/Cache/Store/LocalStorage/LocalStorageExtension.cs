@@ -11,10 +11,12 @@ namespace EasySharp.Cache.Store.LocalStorage
     {
         public static IServiceCollection AddLocalStorage(this IServiceCollection services, IConfigurationRoot Configuration)
         {
+
             var options = new Cacheable();
             Configuration.GetSection(nameof(Cacheable)).Bind(options);
+            services.Configure<Cacheable>(Configuration.GetSection(nameof(Cacheable)));
 
-            var localStorageOptions = options.LocalStorage ?? new LocalStorageOptions();
+            //var localStorageOptions = options.LocalStorage ?? new LocalStorageOptions();
 
             services.AddSingleton(Configuration);
 
