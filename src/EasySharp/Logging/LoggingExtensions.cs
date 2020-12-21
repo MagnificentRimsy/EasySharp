@@ -2,14 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using EasySharp.Logging.Options;
-using Elastic.Apm.NetCoreAll;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Serilog;
 using Serilog.Events;
-using Serilog.Exceptions;
 using Serilog.Filters;
 
 namespace EasySharp.Logging

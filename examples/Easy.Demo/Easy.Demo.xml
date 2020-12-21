@@ -37,12 +37,14 @@
             
             </summary>
         </member>
-        <member name="M:Easy.Demo.Controllers.DemoController.#ctor(EasySharp.Core.Queries.IQueryBus,EasySharp.Core.Commands.ICommandBus)">
+        <member name="M:Easy.Demo.Controllers.DemoController.#ctor(EasySharp.Core.Queries.IQueryBus,EasySharp.Core.Commands.ICommandBus,EasySharp.Cache.Store.Redis.IRedisCacheService,EasySharp.Cache.Store.LocalStorage.IStorage)">
             <summary>
             
             </summary>
             <param name="queryBus"></param>
             <param name="commandBus"></param>
+            <param name="redisCacheService"></param>
+            <param name="storage"></param>
         </member>
         <member name="M:Easy.Demo.Controllers.DemoController.GetCars(System.Threading.CancellationToken)">
             <summary>

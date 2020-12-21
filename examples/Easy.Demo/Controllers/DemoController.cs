@@ -1,6 +1,9 @@
 ﻿using Easy.Demo.Commands.Command;
+using Easy.Demo.Factories.Employees;
 using Easy.Demo.Models;
 using Easy.Demo.Queries.Query;
+using EasySharp.Cache.Store.LocalStorage;
+using EasySharp.Cache.Store.Redis;
 using EasySharp.Core.Attributes;
 using EasySharp.Core.Commands;
 using EasySharp.Core.Messages;
@@ -8,7 +11,9 @@ using EasySharp.Core.Messages.Response;
 using EasySharp.Core.Queries;
 using EasySharp.Helpers;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -29,15 +34,44 @@ namespace Easy.Demo.Controllers
         private readonly IQueryBus _queryBus;
         private readonly ICommandBus _commandBus;
 
+        private readonly IRedisCacheService _redisCacheService;
+        private readonly IStorage _storage;
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="queryBus"></param>
         /// <param name="commandBus"></param>
-        public DemoController(IQueryBus queryBus, ICommandBus commandBus)
+        /// <param name="redisCacheService"></param>
+        /// <param name="storage"></param>
+        public DemoController(IQueryBus queryBus, ICommandBus commandBus, IRedisCacheService redisCacheService, IStorage storage)
         {
             _queryBus = queryBus;
             _commandBus = commandBus;
+            _redisCacheService = redisCacheService;
+            _storage = storage;
+        }
+
+
+        [HttpGet("LocalStorageDocs")]
+        public async Task<IEnumerable<EmployeeDto>> LocalStorageDocs()
+        {
+            var collection = EmployeeFactory.Create();
+
+            //_storage.DestroyAsync();
+            //_storage.ClearAsync();
+
+            var key = Guid.NewGuid().ToString();
+
+            var expected_amount = collection.Count();
+
+            _storage.StoreAsync(key, collection);
+
+            _storage.PersistAsync();
+
+            var target = await _storage.QueryAsync<EmployeeDto>(key);
+
+            return target;
         }
 
         /// <summary>

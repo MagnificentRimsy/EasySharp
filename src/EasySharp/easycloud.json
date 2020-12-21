@@ -67,5 +67,23 @@
         "Description": "The Scope needed to Access HCM Persol Store API"
       }
     }
+  },
+
+  "Cacheable": {
+    "Redis": {
+      "Enable": true,
+      "Connection": "localhost:6379",
+      "InstanceName": "RedisCacheTestDB"
+    },
+    "LocalStorage": {
+      "Enable": true,
+      "AutoLoad": true,
+      "AutoSave": true,
+      "EnableEncryption": true,
+      "EncryptionSalt": "1e69e0a615e8cb813812ca797d75d4f08bdc2f56",
+      "EncryptionKey": "password",
+      "Folder": "wwwroot\\storage\\disk\\",
+      "Filename": ".localstorage"
+    }
   }
 }

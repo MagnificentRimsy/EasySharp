@@ -1,23 +1,17 @@
 using Easy.Demo.Data;
 using Easy.Demo.Interface;
 using Easy.Demo.Repos;
+using EasySharp.Cache;
 using EasySharp.Core;
 using EasySharp.Core.Cors;
 using EasySharp.EfCore;
-using EasySharp.Logging;
 using EasySharp.Swagger;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Serilog;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Easy.Demo
 {
@@ -50,7 +44,8 @@ namespace Easy.Demo
                 .AddEasySharp(typeof(Startup))
                 .AddEfCore<DataContext>()
                 .AddDocs()
-                .AddCorsOption();
+                .AddCorsOption()
+                .AddCacheable();
 
             services.AddScoped<IEmployee, EmployeeRepo>();
         }
