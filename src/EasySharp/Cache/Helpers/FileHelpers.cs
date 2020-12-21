@@ -9,8 +9,18 @@ namespace EasySharp.Cache.Helpers
     {
         internal static string GetLocalStoreFilePath(string folder, string filename)
         {
+            CreateDirectoryIfDoesNotExist(folder);
+
             return Path.Combine(folder, filename);
             //return Path.Combine(System.AppContext.BaseDirectory, filename);
+        }
+
+        internal static void CreateDirectoryIfDoesNotExist(string folder)
+        {
+            if (!Directory.Exists(folder))
+            {
+                Directory.CreateDirectory(folder);
+            }
         }
     }
 }
