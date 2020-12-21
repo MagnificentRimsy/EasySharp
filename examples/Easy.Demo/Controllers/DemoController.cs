@@ -53,6 +53,20 @@ namespace Easy.Demo.Controllers
         }
 
 
+        // GET api/values
+        [HttpGet("spRedisTry")]
+        public IEnumerable<EmployeeDto> spRedisTry()
+        {
+
+            if (!_redisCacheService.TryGetValue(key: "carkey", result: out IEnumerable<EmployeeDto> values))
+            {
+                values = EmployeeFactory.Create();//get data from db instead
+                _redisCacheService.Set(key: "carkey", data: values, cacheTimeInMinutes: 60);
+            }
+
+            return values;
+        }
+
         [HttpGet("LocalStorageDocs")]
         public async Task<IEnumerable<EmployeeDto>> LocalStorageDocs()
         {

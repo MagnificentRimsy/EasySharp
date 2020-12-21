@@ -43,8 +43,7 @@ Basic Example
 - [X] [Validation](#Validation)
 - [X] [EasyLog](#EasyLog)
 - [X] [EfCore](#EfCore)
-- [~~Caching~~](#Caching)
-- [~~Consul~~](#Consul)
+- [X] [Caching](#Caching)
 - [~~Pagination~~](#Pagination)
 - [~~Payment~~](#Payment)
 - [~~HealthCheck~~](#HealthCheck)
@@ -213,5 +212,5 @@ The only supported Database Driver is Efcore. To enable the driver add AddEfCore
 ```yaml
 "EfCoreOptions": {
     "ConnectionString": "Server=DESKTOP-6BR1LOC;Initial Catalog=Db;user id=sa;password=Password"
-    },
+},
 ```
