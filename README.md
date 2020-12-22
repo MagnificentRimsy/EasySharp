@@ -44,7 +44,7 @@ Basic Example
 - [X] [EasyLog](#EasyLog)
 - [X] [EfCore](#EfCore)
 - [X] [Caching](#Caching)
-- [~~Pagination~~](#Pagination)
+- [X] [Pagination](#Pagination)
 - [~~Payment~~](#Payment)
 - [~~HealthCheck~~](#HealthCheck)
       
@@ -265,6 +265,8 @@ Find the app.settings.json configurations below.
     // & Save to file.
    _storage.PersistAsync();
 ```
+
+#### Pagination
 
 
 

@@ -14,7 +14,7 @@ using System.Reflection;
 
 namespace EasySharp.Swagger
 {
-    public static class SwaggerExtensions
+    public static class Extensions
     {
         public static IConfigurationRoot Configuration { get; set; }
         private const string RegistryName = "docs.swagger";

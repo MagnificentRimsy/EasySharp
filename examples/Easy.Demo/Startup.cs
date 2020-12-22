@@ -5,6 +5,7 @@ using EasySharp.Cache;
 using EasySharp.Core;
 using EasySharp.Core.Cors;
 using EasySharp.EfCore;
+using EasySharp.Pagination;
 using EasySharp.Swagger;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -45,7 +46,8 @@ namespace Easy.Demo
                 .AddEfCore<DataContext>()
                 .AddDocs()
                 .AddCorsOption()
-                .AddCacheable();
+                .AddCacheable()
+                .AddApiPagination();
 
             services.AddScoped<IEmployee, EmployeeRepo>();
         }
