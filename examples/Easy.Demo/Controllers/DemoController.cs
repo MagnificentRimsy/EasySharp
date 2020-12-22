@@ -53,7 +53,10 @@ namespace Easy.Demo.Controllers
         }
 
 
-        // GET api/values
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("spRedisTry")]
         public IEnumerable<EmployeeDto> spRedisTry()
         {
@@ -67,6 +70,10 @@ namespace Easy.Demo.Controllers
             return values;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("LocalStorageDocs")]
         public async Task<IEnumerable<EmployeeDto>> LocalStorageDocs()
         {
@@ -133,6 +140,7 @@ namespace Easy.Demo.Controllers
         [HttpPost("CreateRecordCollection")]
         public ApiGenericResponse<IEnumerable<EmployeeDto>> CreateRecordCollection([FromBody] IEnumerable<EmployeeDto> dto) =>
             ApiGenericMsg.OnEntityCreateSuccess(dto, EntityName);
+
 
         /// <summary>
         /// 

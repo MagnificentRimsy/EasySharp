@@ -1,7 +1,7 @@
 # EasySharp
 This library aims to provide an easy way in configuring and developing .netcore web api application.
 
-   [I've written a short Medium post about this repository](https://medium.com)
+
    
 Find the latest at: https://github.com/mkojoa/EasySharp
 
@@ -214,3 +214,58 @@ The only supported Database Driver is Efcore. To enable the driver add AddEfCore
     "ConnectionString": "Server=DESKTOP-6BR1LOC;Initial Catalog=Db;user id=sa;password=Password"
 },
 ```
+
+#### Caching
+Choice of caching is set when using AddCacheable() on the IServiceCollection. Supported caching drivers are
+**Redis Caching**, **In-Memory Caching** and **File Storage Caching**.
+
+Find the app.settings.json configurations below.
+
+```yaml
+"Cacheable": {
+    "Redis": {
+      "Enable": true,
+      "Connection": "localhost:6379",
+      "InstanceName": "RedisCacheTestDB"
+    },
+    "LocalStorage": {
+      "Enable": true,
+      "AutoLoad": true,
+      "AutoSave": true,
+      "EnableEncryption": true,
+      "EncryptionSalt": "1e69e0a615e8cb813812ca797d75d4f08bdc2f56",
+      "EncryptionKey": "password",
+      "Folder": "wwwroot\\storage\\disk\\",
+      "Filename": ".localstorage"
+    }
+  }
+```
+
+*  **Enable** Indicates which driver to use.
+*  **AutoLoad** Load previously persisted state from disk when set to `true`
+*  **AutoSave** Persist the latest state to disk when set to `true`
+*  **EnableEncryption** Encrypt contents when persisting to disk.
+*  **EncryptionSalt**
+*  **EncryptionKey**
+*  **Folder** Path to where the file should be stored and by default has, `wwwroot\\storage\\disk\\`
+*  **Filename** The name of the file and by default, `.localstorage`.
+
+ >Same Implenetation
+ 
+```c#
+    
+    // Data from Database.
+    var collection = EmployeeFactory.Create();
+
+    var key = "storageKey";
+
+    // Save to Memory only.
+   _storage.StoreAsync(key, collection);
+
+    // & Save to file.
+   _storage.PersistAsync();
+``` 
+See DemoController for more examples.
+
+
+
