@@ -250,7 +250,7 @@ Find the app.settings.json configurations below.
 *  **Folder** Path to where the file should be stored and by default has, `wwwroot\\storage\\disk\\`
 *  **Filename** The name of the file and by default, `.localstorage`.
 
- >Same Implenetation
+ >Sample Implementation
  
 ```c#
     
@@ -264,8 +264,7 @@ Find the app.settings.json configurations below.
 
     // & Save to file.
    _storage.PersistAsync();
-``` 
-See DemoController for more examples.
+```
 
 
 
