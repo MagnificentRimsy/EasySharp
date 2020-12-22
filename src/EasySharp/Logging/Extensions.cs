@@ -10,7 +10,7 @@ using Serilog.Filters;
 
 namespace EasySharp.Logging
 {
-    public static class LoggingExtensions
+    public static class Extensions
     {
         public static IHostBuilder UseEasyLog(this IHostBuilder hostBuilder,
             Action<LoggerConfiguration> configure = null)
