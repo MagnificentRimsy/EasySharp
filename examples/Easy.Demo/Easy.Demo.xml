@@ -37,7 +37,7 @@
             
             </summary>
         </member>
-        <member name="M:Easy.Demo.Controllers.DemoController.#ctor(EasySharp.Core.Queries.IQueryBus,EasySharp.Core.Commands.ICommandBus,EasySharp.Cache.Store.Redis.IRedisCacheService,EasySharp.Cache.Store.LocalStorage.IStorage)">
+        <member name="M:Easy.Demo.Controllers.DemoController.#ctor(EasySharp.Core.Queries.IQueryBus,EasySharp.Core.Commands.ICommandBus,EasySharp.Cache.Store.Redis.IRedisCacheService,EasySharp.Cache.Store.LocalStorage.IStorage,EasySharp.Pagination.ServiceUri.IUriService)">
             <summary>
             
             </summary>
@@ -45,6 +45,24 @@
             <param name="commandBus"></param>
             <param name="redisCacheService"></param>
             <param name="storage"></param>
+        </member>
+        <member name="M:Easy.Demo.Controllers.DemoController.spRedisTry">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Easy.Demo.Controllers.DemoController.LocalStorageDocs">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Easy.Demo.Controllers.DemoController.Pagination(EasySharp.Pagination.Wrappers.PaginationFilter,System.Threading.CancellationToken)">
+            <summary>
+            Pagination
+            </summary>
+            <returns></returns>
         </member>
         <member name="M:Easy.Demo.Controllers.DemoController.GetCars(System.Threading.CancellationToken)">
             <summary>

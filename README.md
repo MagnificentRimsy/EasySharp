@@ -267,6 +267,58 @@ Find the app.settings.json configurations below.
 ```
 
 #### Pagination
+Add `AddApiPagination()` to the IServiceCollection in startup.cs in other to enable easysharp pagination.
+Register the Uri Builder in your controller construtor.
+ see the example below
+
+```c#
+        private readonly IUriService _uriService;
+     
+        public NameController(IUriService uriService)
+        {
+            _uriService = uriService;
+        }
+
+
+    [HttpGet("SamplePagination")]
+    public async Task<ActionResult<EmployeeDto>> Pagination([FromQuery] PaginationFilter filter, CancellationToken cancellationToken)
+    {
+        var route = Request.Path.Value;
+        var validFilter = new PaginationFilter(filter.PageNumber, filter.PageSize, filter.SearchQuery);
+
+        // from db
+        var dbResultSet = EmployeeFactory.Create();
+
+        //filter
+        var AsQueryableResult = dbResultSet.AsQueryable()
+                                                .Skip((filter.PageNumber - 1) * filter.PageSize)
+                                                .Take(filter.PageSize).ToList();
+
+
+        //Enable search by search filer
+        if (!string.IsNullOrEmpty(filter.SearchQuery))
+        {
+            // trim & ignore casing
+            var searchQueryForWhereClause = filter.SearchQuery
+                .Trim().ToLowerInvariant();
+
+                AsQueryableResult.Where(o => o.FirstName.ToLowerInvariant().Contains(searchQueryForWhereClause)
+                                || o.LastName.ToLowerInvariant().Contains(searchQueryForWhereClause)).ToList();
+        }
+
+            AsQueryableResult.ToList();
+
+        var totalRecords = dbResultSet.Count();
+        var pagedData = AsQueryableResult;
+
+        var pagedReponse = PaginationHelper.CreatePagedReponse<EmployeeDto>(
+                    pagedData, validFilter, totalRecords, _uriService, route
+            );
+        return Ok(pagedReponse);
+
+    }
+
+```
 
 
 
