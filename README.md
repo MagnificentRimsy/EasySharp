@@ -45,8 +45,9 @@ Basic Example
 - [X] [EfCore](#EfCore)
 - [X] [Caching](#Caching)
 - [X] [Pagination](#Pagination)
-- [~~Payment~~](#Payment)
-- [~~HealthCheck~~](#HealthCheck)
+- [ ] [~~Faker~~](#Faker)
+- [ ] [~~Payment~~](#Payment)
+- [ ] [~~HealthCheck~~](#HealthCheck)
       
 #### EasyDoc
 Easy Doc is used for API documentation.
@@ -319,14 +320,5 @@ Register the Uri Builder in your controller construtor.
     }
 
 ```
-
-
-
-
-#### Payment
-EasySharp provides payment gateway which can be integrated in your application. supported drivers are,
-
- - EMERGENT Pay
- - Hubtel Pay
 
 
