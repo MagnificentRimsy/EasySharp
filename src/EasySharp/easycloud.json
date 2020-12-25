@@ -85,5 +85,48 @@
       "Folder": "wwwroot\\storage\\disk\\",
       "Filename": ".localstorage"
     }
+  },
+
+
+  "MessageBrokersOptions": {
+    "Enable": true,
+    "messageBrokerType": "rabbitmq",
+    "username": "guest",
+    "password": "guest",
+    "virtualHost": "/",
+    "port": 5672,
+    "hostnames": [
+      "localhost"
+    ],
+    "requestTimeout": "00:00:10",
+    "publishConfirmTimeout": "00:00:01",
+    "recoveryInterval": "00:00:10",
+    "persistentDeliveryMode": true,
+    "autoCloseConnection": true,
+    "automaticRecovery": true,
+    "topologyRecovery": true,
+    "exchange": {
+      "durable": true,
+      "autoDelete": false,
+      "type": "fanout",
+      "name": "testms"
+    },
+    "queue": {
+      "declare": true,
+      "durable": true,
+      "exclusive": false,
+      "autoDelete": false
+    }
+  },
+
+  "OutboxOptions": {
+    "Enable": true,
+    "OutboxType": "ef",
+    "DeleteAfter": true
+  },
+
+  "EventStoresOptions": {
+    "Enable": true,
+    "EventStoreType": "ef"
   }
 }

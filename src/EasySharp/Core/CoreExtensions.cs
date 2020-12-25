@@ -2,6 +2,7 @@
 using EasySharp.Core.Behavior;
 using EasySharp.Core.Commands;
 using EasySharp.Core.Cors;
+using EasySharp.Core.Events;
 using EasySharp.Core.Exceptions;
 using EasySharp.Core.Helpers;
 using EasySharp.Core.Queries;
@@ -36,6 +37,8 @@ namespace EasySharp.Core
 
             services.AddScoped<ICommandBus, CommandBus>();
             services.AddScoped<IQueryBus, QueryBus>();
+            services.AddScoped<IEventBus, EventBus>();
+
             services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
             EasySharpServices.Services = services;

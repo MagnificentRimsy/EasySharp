@@ -264,13 +264,18 @@
             <summary>
             
             </summary>
-            <param name="db"></param>
+            <param name="context"></param>
         </member>
         <member name="M:Easy.Demo.Repos.EmployeeRepo.GetEmployees">
             <summary>
             
             </summary>
             <returns></returns>
+        </member>
+        <member name="T:Easy.Demo.RootAggregate.EmployeeAggregate">
+            <summary>
+            
+            </summary>
         </member>
         <member name="T:Easy.Demo.Startup">
             <summary>

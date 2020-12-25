@@ -45,9 +45,9 @@ Basic Example
 - [X] [EfCore](#EfCore)
 - [X] [Caching](#Caching)
 - [X] [Pagination](#Pagination)
-- [ ] [~~Faker~~](#Faker)
-- [ ] [~~Payment~~](#Payment)
-- [ ] [~~HealthCheck~~](#HealthCheck)
+- [X] [MessageBroker](#MessageBroker)
+- [x] [EventStore](#EventStore)
+- [X] [Outbox](#Outbox)
       
 #### EasyDoc
 Easy Doc is used for API documentation.
@@ -269,56 +269,115 @@ Find the app.settings.json configurations below.
 
 #### Pagination
 Add `AddApiPagination()` to the IServiceCollection in startup.cs in other to enable easysharp pagination.
-Register the Uri Builder in your controller construtor.
- see the example below
+Inject `IUriService` in your controller's constructor.
 
+Replace IActionResult in you method definition in the controller to `Task<ActionResult<EmployeeDto>>`.
+
+Add the following to your method.
 ```c#
-        private readonly IUriService _uriService;
-     
-        public NameController(IUriService uriService)
-        {
-            _uriService = uriService;
-        }
+ //Prepare Pagination Links
+ var route = Request.Path.Value;
+ var validFilter = new PaginationFilter(
+     filter.PageNumber, 
+     filter.PageSize, 
+     filter.SearchQuery
+ );
+
+ // from db
+ var dbResultSet = EmployeeFactory.Create();
+
+ //filter
+ var AsQueryableResult = dbResultSet
+                        .AsQueryable()
+                        .Skip((filter.PageNumber - 1) * filter.PageSize)
+                        .Take(filter.PageSize).ToList();
 
 
-    [HttpGet("SamplePagination")]
-    public async Task<ActionResult<EmployeeDto>> Pagination([FromQuery] PaginationFilter filter, CancellationToken cancellationToken)
-    {
-        var route = Request.Path.Value;
-        var validFilter = new PaginationFilter(filter.PageNumber, filter.PageSize, filter.SearchQuery);
+ //Enable search by search filer
+ if (!string.IsNullOrEmpty(filter.SearchQuery))
+ {
+    // trim & ignore casing
+    var searchQueryForWhereClause = filter.SearchQuery
+        .Trim().ToLowerInvariant();
+ 
+    AsQueryableResult
+    .Where(
+    o => o.FirstName.ToLowerInvariant().Contains(searchQueryForWhereClause)
+    || o.LastName.ToLowerInvariant().Contains(searchQueryForWhereClause))
+    .ToList();
+  }
 
-        // from db
-        var dbResultSet = EmployeeFactory.Create();
+    AsQueryableResult.ToList();
 
-        //filter
-        var AsQueryableResult = dbResultSet.AsQueryable()
-                                                .Skip((filter.PageNumber - 1) * filter.PageSize)
-                                                .Take(filter.PageSize).ToList();
+    var totalRecords = dbResultSet.Count();
+    var pagedData = AsQueryableResult;
 
-
-        //Enable search by search filer
-        if (!string.IsNullOrEmpty(filter.SearchQuery))
-        {
-            // trim & ignore casing
-            var searchQueryForWhereClause = filter.SearchQuery
-                .Trim().ToLowerInvariant();
-
-                AsQueryableResult.Where(o => o.FirstName.ToLowerInvariant().Contains(searchQueryForWhereClause)
-                                || o.LastName.ToLowerInvariant().Contains(searchQueryForWhereClause)).ToList();
-        }
-
-            AsQueryableResult.ToList();
-
-        var totalRecords = dbResultSet.Count();
-        var pagedData = AsQueryableResult;
-
-        var pagedReponse = PaginationHelper.CreatePagedReponse<EmployeeDto>(
-                    pagedData, validFilter, totalRecords, _uriService, route
-            );
-        return Ok(pagedReponse);
-
-    }
-
+    var pagedReponse = PaginationHelper.CreatePagedReponse<EmployeeDto>(
+                pagedData, validFilter, totalRecords, _uriService, route
+        );
+    return Ok(pagedReponse);
 ```
 
+#### MessageBroker
+Message broker is used to publish and subscribe to events across services. This is to allow services send events to each other.
 
+To enable message brokers all you need to do , is to use `.AddMessageBroker()` in the `Startup.cs` ***IServiceCollection*** and add the following to the `app.settings.json` file.
+
+```yaml
+"MessageBrokersOptions": {
+    "Enable": true,
+    "messageBrokerType": "rabbitmq",
+    "username": "guest",
+    "password": "guest",
+    "virtualHost": "/",
+    "port": 5672,
+    "hostnames": [
+      "localhost"
+    ],
+    "requestTimeout": "00:00:10",
+    "publishConfirmTimeout": "00:00:01",
+    "recoveryInterval": "00:00:10",
+    "persistentDeliveryMode": true,
+    "autoCloseConnection": true,
+    "automaticRecovery": true,
+    "topologyRecovery": true,
+    "exchange": {
+      "durable": true,
+      "autoDelete": false,
+      "type": "fanout",
+      "name": "testms"
+    },
+    "queue": {
+      "declare": true,
+      "durable": true,
+      "exclusive": false,
+      "autoDelete": false
+    }
+  },
+```
+
+#### Outbox
+In other not to loss any data when publishing to a messasge broker for some reason, it is a good idea to save the event before publishing.
+
+The events are either removed after being published to the message broker or kept with the processed property.
+
+To enable this feature, add `AddOutbox()` to the IServiceCollection in the `Startup.cs`.find the configuration below for the `app.settings.json` fine.
+
+```yaml
+"OutboxOptions": {
+    "Enable" :  true,
+    "OutboxType": "ef",
+    "DeleteAfter": true
+  },
+```
+
+#### EventStore
+You can easly subscribe to event by add the `app.UseSubscribeEvent<YourEvent>()` to you configure method in the `Startup.cs` file.
+
+
+```yaml
+"EventStoresOptions": {
+    "Enable": true,
+    "EventStoreType": "ef"
+  }
+```

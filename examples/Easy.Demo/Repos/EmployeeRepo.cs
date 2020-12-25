@@ -13,16 +13,16 @@ namespace Easy.Demo.Repos
     /// </summary>
     public class EmployeeRepo : IEmployee
     {
-        private DataContext _db;
+        private DataContext _context;
+
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="db"></param>
-        public EmployeeRepo(DataContext db)
+        /// <param name="context"></param>
+        public EmployeeRepo(DataContext context)
         {
-            _db = db;
-            _db.Database.EnsureCreated();
+            _context = context;
         }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace Easy.Demo.Repos
         {
             List<Employee> rows = null;
 
-            await _db.TriggerStoredProc("spEmployees")
+            await _context.TriggerStoredProc("spEmployees")
                 .ExecAsync(async r => rows = await r.ToListAsync<Employee>());
 
             return rows.AsEnumerable();

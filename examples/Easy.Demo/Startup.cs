@@ -5,10 +5,15 @@ using EasySharp.Cache;
 using EasySharp.Core;
 using EasySharp.Core.Cors;
 using EasySharp.EfCore;
+using EasySharp.EventStores;
+using EasySharp.EventStores.Stores.EfCore;
+using EasySharp.MessageBrokers;
+using EasySharp.Outbox;
 using EasySharp.Pagination;
 using EasySharp.Swagger;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -42,12 +47,15 @@ namespace Easy.Demo
         public void ConfigureServices(IServiceCollection services)
         {
             services
-                .AddEasySharp(typeof(Startup))
+                .AddEasySharp(typeof(Startup), typeof(DataContext))
                 .AddEfCore<DataContext>()
                 .AddDocs()
                 .AddCorsOption()
                 .AddCacheable()
-                .AddApiPagination();
+                .AddApiPagination()
+                .AddMessageBroker()
+                .AddEventStore<EmployeeAggregate>()
+                .AddOutbox();
 
             services.AddScoped<IEmployee, EmployeeRepo>();
         }
@@ -65,9 +73,28 @@ namespace Easy.Demo
                 app.UseDeveloperExceptionPage();
             }
 
+            UpdateDatabase(app);
+
             app
                 .UseEasySharp()
                 .UseDocs();
+        }
+
+
+        private static void UpdateDatabase(IApplicationBuilder app)
+        {
+            using (var serviceScope = app.ApplicationServices
+                .GetRequiredService<IServiceScopeFactory>()
+                .CreateScope())
+            {
+                using (var context = serviceScope.ServiceProvider.GetService<EfCoreEventStoreContext>())
+                {
+                    if (!context.Database.CanConnect())
+                    {
+                        context.Database.Migrate();
+                    }
+                }
+            }
         }
     }
 }

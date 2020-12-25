@@ -14,7 +14,13 @@ namespace Easy.Demo.Data
         /// </summary>
         /// <param name="options"></param>
         public DataContext(DbContextOptions<DataContext> options) : base(options)
-        { }
+        {
+            if (!Database.CanConnect())
+            {
+                Database.EnsureCreated();
+            }
+            
+        }
 
         /// <summary>
         /// 
