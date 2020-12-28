@@ -6,12 +6,7 @@ namespace EasySharp.EventStores.Stores.EfCore
     public class EfCoreEventStoreContext : DbContext
     {
         public EfCoreEventStoreContext(DbContextOptions<EfCoreEventStoreContext> options) : base(options)
-        {
-            if (!Database.CanConnect())
-            {
-                Database.EnsureCreated();
-            }
-        }
+        {}
 
         public DbSet<StreamState> Streams { get; set; }
 

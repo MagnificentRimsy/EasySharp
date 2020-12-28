@@ -1,4 +1,5 @@
-﻿using EasySharp.Core.Helpers;
+﻿using EasySharp.Cache.Helpers;
+using EasySharp.Core.Helpers;
 using EasySharp.Swagger.Helpers;
 using EasySharp.Swagger.Option;
 using IdentityServer4.AccessTokenValidation;
@@ -76,6 +77,8 @@ namespace EasySharp.Swagger
                     var commentsFileName = $"{Assembly.GetEntryAssembly().GetName().Name}.XML";
 
                     var commentsFile = Path.Combine(System.AppContext.BaseDirectory, commentsFileName);
+
+                    //FileHelpers.CreateFileIfDoesNotExist(commentsFile);
 
                     c.IncludeXmlComments(commentsFile);
                 }

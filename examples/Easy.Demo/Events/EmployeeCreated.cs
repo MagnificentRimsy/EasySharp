@@ -1,15 +1,15 @@
-﻿using EasySharp.EventStores.Aggregate;
+﻿using EasySharp.Core.Events;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Easy.Demo
+namespace Easy.Demo.Events
 {
     /// <summary>
     /// 
     /// </summary>
-    public class EmployeeAggregate : Aggregate
+    public class EmployeeCreated : Event
     {
     }
 }

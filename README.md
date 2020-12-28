@@ -2,8 +2,9 @@
 This library aims to provide an easy way in configuring and developing .netcore web api application.
 
 
-   
-Find the latest at: https://github.com/mkojoa/EasySharp
+
+##### Find my clean microservices architecture repo using easysharp latest at: https://github.com/mkojoa/EasySharp
+
 
 ###### > EasySharp Library repository is work in progress.
 

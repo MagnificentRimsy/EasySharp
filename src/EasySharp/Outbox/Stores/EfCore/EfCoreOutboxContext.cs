@@ -5,12 +5,7 @@ namespace EasySharp.Outbox.Stores.EfCore
     public class EfCoreOutboxContext : DbContext
     {
         public EfCoreOutboxContext(DbContextOptions<EfCoreOutboxContext> options) : base(options)
-        {
-            if (!Database.CanConnect())
-            {
-                Database.EnsureCreated();
-            }
-        }
+        {}
 
         public DbSet<OutboxMessage> OutboxMessages { get; set; }
 

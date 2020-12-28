@@ -173,6 +173,11 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:Easy.Demo.Events.EmployeeCreated">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:Easy.Demo.Interface.IEmployee">
             <summary>
             
@@ -271,11 +276,6 @@
             
             </summary>
             <returns></returns>
-        </member>
-        <member name="T:Easy.Demo.RootAggregate.EmployeeAggregate">
-            <summary>
-            
-            </summary>
         </member>
         <member name="T:Easy.Demo.Startup">
             <summary>

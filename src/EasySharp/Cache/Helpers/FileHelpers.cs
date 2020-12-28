@@ -22,5 +22,13 @@ namespace EasySharp.Cache.Helpers
                 Directory.CreateDirectory(folder);
             }
         }
+
+        internal static void CreateFileIfDoesNotExist(string file)
+        {
+            if (!File.Exists(file))
+            {
+                File.Create(file).Close();
+            }
+        }
     }
 }

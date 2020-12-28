@@ -1,4 +1,5 @@
 using Easy.Demo.Data;
+using Easy.Demo.Events;
 using Easy.Demo.Interface;
 using Easy.Demo.Repos;
 using EasySharp.Cache;
@@ -54,7 +55,6 @@ namespace Easy.Demo
                 .AddCacheable()
                 .AddApiPagination()
                 .AddMessageBroker()
-                .AddEventStore<EmployeeAggregate>()
                 .AddOutbox();
 
             services.AddScoped<IEmployee, EmployeeRepo>();
@@ -73,11 +73,12 @@ namespace Easy.Demo
                 app.UseDeveloperExceptionPage();
             }
 
-            UpdateDatabase(app);
+           // UpdateDatabase(app);
 
             app
                 .UseEasySharp()
-                .UseDocs();
+                .UseDocs()
+                .UseSubscribeEvent<EmployeeCreated>();
         }
 
 
@@ -89,10 +90,7 @@ namespace Easy.Demo
             {
                 using (var context = serviceScope.ServiceProvider.GetService<EfCoreEventStoreContext>())
                 {
-                    if (!context.Database.CanConnect())
-                    {
-                        context.Database.Migrate();
-                    }
+                    context.Database.Migrate();
                 }
             }
         }
