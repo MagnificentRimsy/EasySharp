@@ -128,5 +128,11 @@
   "EventStoresOptions": {
     "Enable": true,
     "EventStoreType": "ef"
+  },
+
+  "ConsulOptions": {
+    "ConsulAddress": "http://localhost:8500",
+    "ServiceAddress": "http://uri_service",
+    "Tags": []
   }
 }

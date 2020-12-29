@@ -49,6 +49,7 @@ Basic Example
 - [X] [MessageBroker](#MessageBroker)
 - [x] [EventStore](#EventStore)
 - [X] [Outbox](#Outbox)
+- [ ] [Consul](#Consul)
       
 #### EasyDoc
 Easy Doc is used for API documentation.
