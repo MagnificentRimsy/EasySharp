@@ -19,7 +19,7 @@ namespace EasySharp.Cache.Store.LocalStorage
         /// <remarks>
         /// Use the Destroy method to delete the persisted file on disk.
         /// </remarks>
-        public void ClearAsync();
+         void ClearAsync();
 
         /// <summary>
         /// Deletes the persisted file on disk, if it exists, but keeps the in-memory data intact.
@@ -27,26 +27,26 @@ namespace EasySharp.Cache.Store.LocalStorage
         /// <remarks>
         /// Use the Clear method to clear only the in-memory contents.
         /// </remarks>
-        public void DestroyAsync();
+         void DestroyAsync();
 
         /// <summary>
         /// Determines whether this Local Storage instance contains the specified key.
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
-        public Task<bool> ExistsAsync(string key);
+         Task<bool> ExistsAsync(string key);
 
         /// <summary>
         /// Gets an object from the Local Storage, without knowing its type.
         /// </summary>
         /// <param name="key">Unique key, as used when the object was stored.</param>
-        public Task<object> GetAsync(string key);
+         Task<object> GetAsync(string key);
 
         /// <summary>
         /// Gets a strong typed object from the Local Storage.
         /// </summary>
         /// <param name="key">Unique key, as used when the object was stored.</param>
-        public Task<T> GetAsync<T>(string key);
+         Task<T> GetAsync<T>(string key);
 
         /// <summary>
         /// Gets a collection containing all the keys in the Local Storage.
@@ -59,7 +59,7 @@ namespace EasySharp.Cache.Store.LocalStorage
         /// <remarks>
         /// Simply doesn't do anything if the file is not found on disk.
         /// </remarks>
-        public void LoadAsync();
+         void LoadAsync();
 
 
         /// <summary>
@@ -67,17 +67,17 @@ namespace EasySharp.Cache.Store.LocalStorage
         /// </summary>
         /// <param name="key">Unique key, can be any string, used for retrieving it later.</param>
         /// <param name="instance"></param>
-        public void StoreAsync<T>(string key, T instance);
+         void StoreAsync<T>(string key, T instance);
 
         /// <summary>
         /// Syntax sugar that transforms the response to an IEnumerable<T>, whilst also passing along an optional WHERE-clause. 
         /// </summary>
-        public Task<IEnumerable<T>> QueryAsync<T>(string key, Func<T, bool> predicate = null);
+         Task<IEnumerable<T>> QueryAsync<T>(string key, Func<T, bool> predicate = null);
 
         /// <summary>
         /// Persists the in-memory store to disk.
         /// </summary>
-        public void PersistAsync();
+         void PersistAsync();
 
         /// <summary>
         /// 
@@ -86,6 +86,6 @@ namespace EasySharp.Cache.Store.LocalStorage
         /// <param name="key"></param>
         /// <param name="result"></param>
         /// <returns></returns>
-        public bool TryGetValueAsync<T>(string key, out T result);
+         bool TryGetValueAsync<T>(string key, out T result);
     }
 }

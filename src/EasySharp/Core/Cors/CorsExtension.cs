@@ -50,9 +50,9 @@ namespace EasySharp.Core.Cors
             {
                 string[] clientUrls = linksOption.ToArray();
 
-                services.AddCors(options =>
+                services.AddCors(opt =>
                 {
-                    options.AddPolicy(policyName,
+                    opt.AddPolicy(policyName,
                         fbuilder => fbuilder.WithOrigins(clientUrls)
                             .AllowAnyMethod()
                             .AllowAnyHeader()
