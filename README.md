@@ -3,7 +3,7 @@ This library aims to provide an easy way in configuring and developing .netcore 
 
 ![](https://vistr.dev/badge?repo=mkojoa.EasySharp)
 
-##### Find my clean microservices architecture repo using easysharp latest at: https://github.com/mkojoa/EasyMicro
+##### Find my clean microservices architecture repo using easysharp latest at: https://github.com/mkojoa/EasySharpMicroservice
 
 
 ###### > EasySharp Library repository is work in progress.
