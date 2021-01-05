@@ -1,7 +1,7 @@
 # EasySharp
 This library aims to provide an easy way in configuring and developing .netcore web api application.
 
-![](https://vistr.dev/badge?repo=mkojoa.EasySharp)
+![](https://vistr.dev/badge?repo=mkojoa.EasySharp&color=0058AD)
 
 ##### Find my clean microservices architecture repo using easysharp latest at: https://github.com/mkojoa/EasySharpMicroservice
 
